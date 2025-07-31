@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kode Admin Dashboard">
+  <meta name="keywords" content="bootstrap, admin, dashboard, template" />
+
+  <!-- ========== Css Files ========== -->
+  <link href="{% static 'myprojectadmin/kode.bragherstudio.com/css/root.css' %}" rel="stylesheet">
+  <link href="{% static 'myprojectadmin/kode.bragherstudio.com/js/chartist/chartist.css' %}" rel="stylesheet">
+  <style>
+    body {
+      background-color: white !important;
+    }
+    .ct-chart {
+      height: 300px;
+    }
+    .chart-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      background-color: white;
+    }
+    .chart-labels {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    .card-summary {
+      padding: 20px;
+      margin: 20px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card-summary h3 {
+      font-size: 20px;
+      color: #333;
+    }
+    .card-summary .number {
+      font-size: 36px;
+      font-weight: bold;
+      color: #3498db;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading animation -->
+  <div class="loading"><img src="{% static 'myprojectadmin/kode.bragherstudio.com/img/loading.gif' %}" alt="loading-img"></div>
+
+  <!-- Top bar -->
+  <div id="top" class="clearfix">
+    <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+    <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+    <form class="searchform">
+      <input type="text" class="searchbox" id="searchbox" placeholder="Search">
+      <span class="searchbutton"><i class="fa fa-search"></i></span>
+    </form>
+    <ul class="top-right">
+      <li class="link">
+        <a href="#" class="notifications">6</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar clearfix">
+    <ul class="sidebar-panel nav">
+      <li class="sidetitle">MAIN</li>
+
+      <li><a href="#"><span class="icon color9"><i class="fa fa-th"></i></span>Tables<span class="caret"></span></a>
+        <ul>
+          <li><a href="adminviewcomplaint">Complaint View</a></li>
+          <li><a href="{% url 'admin-table' %}">User</a></li>
+          <li><a href="{% url 'admintechview' %}">Technician</a></li>
+          <li><a href="{% url 'adminstore' %}">Store</a></li>
+        </ul>
+      </li>
+      <li><a href="logout">Log Out</a></li>
+    </ul>
+  </div>
+
+  <!-- Booking Card -->
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1">
+      <div class="card-summary">
+        <h3>Total Bookings</h3>
+        <div class="number">{{ booking_count }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  <div class="row chart-container">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-title text-center">User Types Distribution</div>
+        <div class="panel-body">
+          <div class="ct-chart ct-perfect-fourth" id="pieChart"></div>
+          <div class="chart-labels">
+            <strong>Users:</strong> {{ user_count }} &nbsp; | &nbsp;
+            <strong>Technicians:</strong> {{ technician_count }} &nbsp; | &nbsp;
+            <strong>Stores:</strong> {{ store_count }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="{% static 'myprojectadmin/kode.bragherstudio.com/js/jquery.min.js' %}"></script>
+  <script src="{% static 'myprojectadmin/kode.bragherstudio.com/js/bootstrap/bootstrap.min.js' %}"></script>
+  <script src="{% static 'myprojectadmin/kode.bragherstudio.com/js/plugins.js' %}"></script>
+  <script src="{% static 'myprojectadmin/kode.bragherstudio.com/js/chartist/chartist.js' %}"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const userCount = {{ user_count }};
+      const technicianCount = {{ technician_count }};
+      const storeCount = {{ store_count }};
+
+      new Chartist.Pie('#pieChart', {
+        labels: ['Users', 'Technicians', 'Stores'],
+        series: [userCount, technicianCount, storeCount]
+      }, {
+        labelInterpolationFnc: function(value, index) {
+          const counts = [userCount, technicianCount, storeCount];
+          return value + '\n' + counts[index];
+        }
+      });
+    });
+  </script>
+</body>
+</html>
