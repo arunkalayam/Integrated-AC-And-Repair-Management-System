@@ -1,0 +1,77 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking View By User</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Booking View By User</h2>
+    <div class="accordion" id="bookingAccordion">
+
+      {% for tech in forms3 %}
+      <div class="accordion-item mb-3">
+        <h2 class="accordion-header" id="heading{{ tech.id }}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ tech.id }}" aria-expanded="false" aria-controls="collapse{{ tech.id }}">
+            Booking with {{ tech.technicianid.Technician_Name }} — {{ tech.Date }} at {{ tech.Time }}
+          </button>
+        </h2>
+        <div id="collapse{{ tech.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ tech.id }}" data-bs-parent="#bookingAccordion">
+          <div class="accordion-body">
+
+            <ul class="list-group mb-3">
+              <li class="list-group-item"><strong>District:</strong> {{ tech.technicianid.District }}</li>
+              <li class="list-group-item"><strong>City:</strong> {{ tech.technicianid.City }}</li>
+              <li class="list-group-item"><strong>Contact:</strong> {{ tech.technicianid.Contact }}</li>
+              <li class="list-group-item"><strong>Error Code:</strong> {{ tech.Error_code }}</li>
+              <li class="list-group-item"><strong>Error Image:</strong> <br>
+                {% if tech.Error_img %}
+                  <img src="{{ tech.Error_img.url }}" alt="Error Image" class="img-fluid" style="max-height: 200px;">
+                {% else %}
+                  No image uploaded.
+                {% endif %}
+              </li>
+              <li class="list-group-item"><strong>Status:</strong>
+                {% if tech.tech_status == 1 %} Accepted
+                {% elif tech.tech_status == 2 %} Rejected
+                {% else %} Pending
+                {% endif %}
+              </li>
+              <li class="list-group-item"><strong>Payment Status:</strong>
+                {% if tech.pa_status == 1 %}
+                  <span class="badge bg-success">Payment Success</span>
+                {% else %}
+                  <span class="badge bg-warning text-dark">Not Paid</span>
+                {% endif %}
+              </li>
+            </ul>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="{% url 'cancel' tech.id %}" class="btn btn-danger btn-sm">Cancel</a>
+              <a href="{% url 'edit' tech.id %}" class="btn btn-warning btn-sm">Edit</a>
+              <a href="{% url 'feedback' tech.technicianid.id %}" class="btn btn-success btn-sm">Feedback</a>
+              <a href="{% url 'tracking' tech.id %}" class="btn btn-info btn-sm">Track Service</a>
+              <a href="{% url 'complaint' tech.technicianid.id %}" class="btn btn-secondary btn-sm">Complaint</a>
+              <a href="{% url 'userstoreview' tech.id %}" class="btn btn-primary btn-sm">Parts</a>
+
+              {% if tech.pa_status != 1 %}
+                <a href="{% url 'userpay' tech.id %}" class="btn btn-dark btn-sm">Pay Online</a>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

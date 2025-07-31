@@ -1,0 +1,104 @@
+{% extends 'storehomeheader.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">My Orders</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped order-table table-sm align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Amount</th>
+                    <th>Parts Image</th>
+                    <th>Description</th>
+                    <th>Order Date</th>
+                    <th>Booking Date</th>
+                     <th>Booking Time</th>
+                    <th>Technician</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Refund</th>
+                    <th>Allotment</th>
+                    <th>Delivery Status</th>
+                    <th>Return Allotment</th>
+                    <th>Return Status</th>
+                    <th>Payment</th> <!-- Payment column -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in forms5 %}
+                <tr>
+                    <td>{{ a.partsid.Parts_name }}</td>
+                    <td>₹{{ a.partsid.Amount }}</td>
+                    <td>
+                        <img src="{{ a.partsid.Parts_Image.url }}" alt="Part Image" style="max-width: 80px; max-height: 80px; object-fit: contain;">
+                    </td>
+                    <td>{{ a.partsid.Description }}</td>
+                    <td>{{ a.current_date }}</td>
+                     <td>{{ a.bookin_id.Date }}</td>
+                     <td>{{ a.bookin_id.Time }}</td>
+
+
+
+                    <td>{{ a.technicianid.Technician_Name }}</td>
+                    <td>₹{{ a.Total_Amount }}</td>
+                    <td>
+                        {% if a.c_status == 0 %}
+                            <span class="text-success">Active</span>
+                        {% else %}
+                            <span class="text-danger fw-bold">Canceled</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if a.c_status != 0 %}
+                           <a class="text-primary" href="{% url 'refund' a.technicianid.id a.id %}">Click here for refund</a>
+
+                        {% else %}
+                            <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if a.c_status == 0 %}
+                            {% if a.del_status == 0 %}
+                                <a href="{% url 'allotdelivery' a.id %}" class="btn btn-primary btn-sm">Allot</a>
+                            {% else %}
+                                <a href="{% url 'views_allotment' a.id %}" class="btn btn-info btn-sm">View Allot</a>
+                            {% endif %}
+                        {% else %}
+                            <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if a.del_status == 2 %}
+                            <span class="badge bg-success">Delivered</span>
+                        {% elif a.del_status == 1 %}
+                            <span class="badge bg-warning text-dark">Out for Delivery</span>
+                        {% else %}
+                            <span class="badge bg-secondary">Not Delivered</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if a.c_status == 1 and a.del_status == 2 and a.ret_status == 0 %}
+                            <a href="{% url 'allot_return_delivery' a.id %}" class="btn btn-sm btn-warning">Allot Return</a>
+                        {% else %}
+                            <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if a.c_status == 1 and a.del_status == 2 and a.ret_status == 1 %}
+                            <a href="{% url 'view_return_delivery' a.id %}" class="btn btn-sm btn-info">View Return</a>
+                            <span class="badge bg-success ms-1">Returned by Delivery</span>
+                        {% else %}
+                            <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <!-- Make Payment button always visible -->
+                        <a href="{% url 'del_pay_list' store_id %}" class="btn btn-sm btn-success">Make Payment</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

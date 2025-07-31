@@ -1,0 +1,66 @@
+{% extends 'storehomeheader.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Delivery Payment Summary - {{ store.Name }}</h2>
+
+  <!-- Filter Form -->
+  <form method="get" class="form-inline mb-3">
+    <div class="form-group mr-3">
+      <label for="month" class="mr-2"><strong>Month:</strong></label>
+      <input type="month" name="month" id="month" class="form-control" value="{{ selected_month }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+  </form>
+
+  <!-- Payment Table -->
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered table-striped text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>City</th>
+          <th>License No</th>
+          <th>Deliveries</th>
+          <th>Payment (₹)</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in delivery_data %}
+        <tr>
+          <td>{{ d.Name }}</td>
+          <td>{{ d.Contact }}</td>
+          <td>{{ d.City }}</td>
+          <td>{{ d.License_no }}</td>
+          <td>{{ d.delivery_count }}</td>
+          <td>{{ d.payment }}</td>
+          <td>
+            {% if d.is_paid %}
+              <span class="badge badge-success">Paid</span>
+            {% else %}
+              <span class="badge badge-danger">Unpaid</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if d.payment > 0 and not d.is_paid %}
+              <a href="{% url 'make_payment' d.id %}?month={{ selected_month }}" class="btn btn-success btn-sm">Pay</a>
+            {% elif d.is_paid %}
+              <span class="text-success font-weight-bold">Already Paid</span>
+            {% else %}
+              <span class="text-muted">No Payment Due</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="8" class="text-center">No delivery records found for this month.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

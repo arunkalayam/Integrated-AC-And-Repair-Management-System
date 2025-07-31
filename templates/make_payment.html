@@ -1,0 +1,17 @@
+{% extends 'storehomeheader.html' %}
+{% block content %}
+<h2 style="text-align:center;">Make Payment for {{ delivery.Name }}</h2>
+<table border="1" cellspacing="0" cellpadding="10" style="width:50%; margin:auto;">
+    <tr><th>Name</th><td>{{ delivery.Name }}</td></tr>
+    <tr><th>Contact</th><td>{{ delivery.Contact }}</td></tr>
+    <tr><th>City</th><td>{{ delivery.City }}</td></tr>
+    <tr><th>License No</th><td>{{ delivery.License_no }}</td></tr>
+    <tr><th>Deliveries</th><td>{{ delivery_count }}</td></tr>
+    <tr><th>Total Payment</th><td>₹{{ payment }}</td></tr>
+</table>
+
+<form method="post" style="text-align:center; margin-top:20px;">
+    {% csrf_token %}
+    <button type="submit" style="padding:10px 20px;">Proceed to Payment</button>
+</form>
+{% endblock %}

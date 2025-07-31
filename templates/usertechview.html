@@ -1,0 +1,129 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Technicians</title>
+  <style>
+    .search-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .table-container {
+      margin: 30px auto;
+      width: 95%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .stars {
+      font-size: 16px;
+    }
+
+    .star-gold {
+      color: gold;
+    }
+
+    .star-grey {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="search-container">
+  <form method="get" id="searchForm">
+    <input type="text" name="query" placeholder="Search Technician" value="{{ request.GET.query }}">
+    <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+    <input type="hidden" name="search_type" id="search_type" value="general">
+    <input type="hidden" name="error_code" value="{{ error_code }}">
+    <input type="hidden" name="image_url" value="{{ image_url }}">
+    <button type="submit" onclick="setSearchType('general')">Search Technician</button>
+    <button type="button" onclick="getLocationAndSearch()">Search Nearest</button>
+  </form>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>District</th>
+        <th>City</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Distance (km)</th>
+        <th>Best Rating</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in user1 %}
+      <tr>
+        <td>{{ user.Technician_Name }}</td>
+        <td>{{ user.District }}</td>
+        <td>{{ user.City }}</td>
+        <td>{{ user.Contact }}</td>
+        <td>{{ user.loginid.Email }}</td>
+        <td>{% if user.distance %}{{ user.distance }}{% else %}-{% endif %}</td>
+        <td class="stars">
+          {% for i in "12345" %}
+            {% if forloop.counter <= user.max_rating %}
+              <span class="star-gold">&#9733;</span>
+            {% else %}
+              <span class="star-grey">&#9733;</span>
+            {% endif %}
+          {% endfor %}
+          ({{ user.max_rating }})
+        </td>
+        <td><a href="{% url 'booktable' user.id error_code %}?image_url={{ image_url|urlencode }}">Booking</a></td>
+        <td><a href="{% url 'feedbook' user.id %}">Feedback</a></td>
+        <td><a href="{% url 'chat' user.loginid.id %}">Chat</a></td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="10">No technicians found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function setSearchType(type) {
+    document.getElementById('search_type').value = type;
+  }
+
+  function getLocationAndSearch() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementById('latitude').value = position.coords.latitude;
+        document.getElementById('longitude').value = position.coords.longitude;
+        document.getElementById('search_type').value = 'nearest';
+        document.getElementById('searchForm').submit();
+      }, function() {
+        alert("Location permission denied.");
+      });
+    } else {
+      alert("Geolocation not supported.");
+    }
+  }
+</script>
+
+</body>
+</html>
+{% endblock %}

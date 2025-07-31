@@ -1,0 +1,55 @@
+{% extends 'delivery_header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Profile Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Update Delivery Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <fieldset>
+            <legend><strong>Profile Information</strong></legend>
+            {{ form1.as_p }}
+        </fieldset>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit">Edit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}

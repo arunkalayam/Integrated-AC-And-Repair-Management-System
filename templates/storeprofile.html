@@ -1,0 +1,112 @@
+{% extends 'storehomeheader.html' %}
+{% block content %}
+
+<!-- Leaflet core + geocoder CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+
+<style>
+    #map {
+        height: 400px;
+        width: 80%;
+        margin: 20px auto;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+    }
+</style>
+
+<center>
+    <h1>Store Profile Update</h1><br>
+
+    <form method="post">
+        {% csrf_token %}
+        <div style="text-align:left; display:inline-block;">
+            {{ forms2.as_p }}
+            {{ form2.as_p }}
+        </div>
+
+        <div id="map"></div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</center>
+
+<!-- Leaflet JS + Geocoder -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const latInput  = document.getElementById("id_latitude");
+    const lonInput  = document.getElementById("id_longitude");
+    const nameInput = document.getElementById("id_location_name");
+
+    let lat = parseFloat(latInput.value);
+    let lon = parseFloat(lonInput.value);
+
+    // Default coordinates (Kerala) if none exist
+    if (isNaN(lat) || isNaN(lon)) {
+        lat = 10.8505;
+        lon = 76.2711;
+    }
+
+    const map = L.map("map").setView([lat, lon], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap"
+    }).addTo(map);
+
+    let marker = null;
+
+    function placeMarker(latlng, label = "") {
+        if (!marker) {
+            marker = L.marker(latlng, { draggable: true }).addTo(map);
+            marker.on("dragend", () => {
+                const p = marker.getLatLng();
+                latInput.value = p.lat.toFixed(6);
+                lonInput.value = p.lng.toFixed(6);
+                nameInput.value = ""; // clear label after drag
+            });
+        } else {
+            marker.setLatLng(latlng);
+        }
+
+        latInput.value = latlng.lat.toFixed(6);
+        lonInput.value = latlng.lng.toFixed(6);
+        if (label) nameInput.value = label;
+    }
+
+    // Show existing marker if coords exist
+    if (!isNaN(lat) && !isNaN(lon)) {
+        placeMarker({ lat, lng: lon });
+    }
+
+    map.on("click", e => {
+        placeMarker(e.latlng);
+    });
+
+    L.Control.geocoder({
+        defaultMarkGeocode: false,
+        placeholder: "Search town/city"
+    }).on("markgeocode", e => {
+        const center = e.geocode.center;
+        const label  = e.geocode.name;
+        placeMarker(center, label);
+        map.setView(center, 14);
+    }).addTo(map);
+
+    // Attempt to get browser location
+    if (!latInput.value || !lonInput.value) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                const { latitude, longitude } = pos.coords;
+                placeMarker({ lat: latitude, lng: longitude });
+                map.setView([latitude, longitude], 13);
+            });
+        }
+    }
+
+    setTimeout(() => map.invalidateSize(), 400);
+});
+</script>
+
+{% endblock %}
