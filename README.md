@@ -1,1 +1,0 @@
-# Integrated-AC-And-Repair-Management-System
