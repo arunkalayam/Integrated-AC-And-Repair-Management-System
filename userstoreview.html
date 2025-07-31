@@ -1,0 +1,42 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+<center>
+    <h1>Order</h1>
+</center>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <td>Product name</td>
+        <td>Amount</td>
+        <td>Parts Image</td>
+        <td>Description</td>
+        <td>Current Date</td>
+        <td>Store Name </td>
+        <td>Total Amount</td>
+        </tr>
+    </thead>
+    {% for a in forms5 %}
+    <tbody>
+        <td>{{a.partsid.Parts_name}}</td>
+        <td>{{a.partsid.Amount}}</td>
+        <td><img src="{{a.partsid.Parts_Image.url}}" style="max-width: 100px; max-height: 100px; height: auto; width: auto;"> </td>
+        <td>{{a.partsid.Description}}</td>
+        <td>{{a.partsid.cur_date}}</td>
+        <td>{{a.partsid.store_id.Shop_name}}</td>
+        <td>{{a.Total_Amount}}</td>
+
+    </tbody>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

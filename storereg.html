@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'reg/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reg/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reg/css/iofrm-style.css' %}">
+    <link rel="stylesheet" href="{% static 'reg/css/iofrm-theme20.css' %}">
+
+    <!-- Leaflet + Geocoder CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+    <style>
+        #map {
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-body without-side">
+    <div class="iofrm-layout">
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+                <img src="{% static 'reg/images/graphic3.svg' %}" alt="">
+            </div>
+        </div>
+
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register New Shop</h3>
+                    <p>Provide shop details and choose location.</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ store.as_p }}
+
+                        <!-- Manually render Email and Password fields -->
+                        <div class="form-group">
+                            <label for="id_Email">Email</label>
+                            <input type="email" name="Email" id="id_Email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_Password">Password</label>
+                            <input type="password" name="Password" id="id_Password" class="form-control" required>
+                        </div>
+
+                        <label>Select shop location or search:</label>
+                        <div id="map"></div>
+
+                        <div class="form-button mt-3">
+                            <button type="submit" class="ibtn">Submit</button>
+                        </div>
+                    </form>
+
+                    <div class="page-links">
+                        <a href="{% static 'reg/login20.html' %}">Login to account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS libs -->
+<script src="{% static 'reg/js/jquery.min.js' %}"></script>
+<script src="{% static 'reg/js/popper.min.js' %}"></script>
+<script src="{% static 'reg/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'reg/js/main.js' %}"></script>
+
+<!-- Leaflet + Geocoder JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<!-- Leaflet Map Logic -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const latInput  = document.getElementById("id_latitude");
+    const lonInput  = document.getElementById("id_longitude");
+    const nameInput = document.getElementById("id_location_name");
+
+    let lat = 10.8505, lon = 76.2711;
+
+    const map = L.map("map").setView([lat, lon], 7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap"
+    }).addTo(map);
+
+    let marker = L.marker([lat, lon], { draggable: true }).addTo(map);
+
+    function setHidden(lat, lon, label = "") {
+        latInput.value = lat.toFixed(6);
+        lonInput.value = lon.toFixed(6);
+        if (label) nameInput.value = label;
+    }
+
+    setHidden(lat, lon);
+
+    marker.on("dragend", () => {
+        const p = marker.getLatLng();
+        setHidden(p.lat, p.lng, "");
+    });
+
+    map.on("click", e => {
+        marker.setLatLng(e.latlng);
+        setHidden(e.latlng.lat, e.latlng.lng, "");
+    });
+
+    L.Control.geocoder({
+        defaultMarkGeocode: false,
+        placeholder: "Search town or city"
+    }).on("markgeocode", e => {
+        const center = e.geocode.center;
+        const label  = e.geocode.name;
+        marker.setLatLng(center);
+        map.setView(center, 14);
+        setHidden(center.lat, center.lng, label);
+    }).addTo(map);
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            const { latitude, longitude } = pos.coords;
+            marker.setLatLng([latitude, longitude]);
+            map.setView([latitude, longitude], 13);
+            setHidden(latitude, longitude);
+        });
+    }
+
+    setTimeout(() => map.invalidateSize(), 400);
+});
+</script>
+
+<!-- Validation Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const validators = [];
+
+    function handleValidation(input, pattern, validMsg, invalidMsg) {
+        const feedback = document.createElement('small');
+        feedback.style.display = 'block';
+        input.parentNode.appendChild(feedback);
+
+        function validate() {
+            const value = input.value.trim();
+            if (!value) {
+                feedback.textContent = '❌ This field is required';
+                feedback.style.color = 'red';
+                return false;
+            } else if (!pattern.test(value)) {
+                feedback.textContent = '❌ ' + invalidMsg;
+                feedback.style.color = 'red';
+                return false;
+            } else {
+                feedback.textContent = '✅ ' + validMsg;
+                feedback.style.color = 'green';
+                return true;
+            }
+        }
+
+        input.addEventListener('input', validate);
+        validators.push(validate);
+    }
+
+    // Shop_name
+    const shopName = document.querySelector('input[name="Shop_name"]');
+    if (shopName) {
+        handleValidation(shopName, /^[A-Za-z0-9 ,.-]+$/, 'Valid shop name', 'Shop name contains invalid characters');
+    }
+
+    // Address
+    const address = document.querySelector('input[name="Address"]');
+    if (address) {
+        handleValidation(address, /^[A-Za-z0-9 ,.-]+$/, 'Valid address', 'Invalid address format');
+    }
+
+    // District, City
+    ['District', 'City'].forEach(name => {
+        const input = document.querySelector(`input[name="${name}"]`);
+        if (input) {
+            handleValidation(input, /^[A-Za-z ]+$/, `Valid ${name}`, `${name} must contain only letters and spaces`);
+        }
+    });
+
+    // Email
+    const email = document.querySelector('input[name="Email"]');
+    if (email) {
+        handleValidation(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Valid email', 'Enter a valid email address');
+    }
+
+    // Password
+    const password = document.querySelector('input[name="Password"]');
+    if (password) {
+        handleValidation(password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/, 
+            'Strong password', 
+            'Password must be 8+ chars, include uppercase, lowercase, number, and symbol');
+    }
+
+    // Latitude & Longitude check
+    const lat = document.querySelector('input[name="latitude"]');
+    const lon = document.querySelector('input[name="longitude"]');
+    validators.push(() => {
+        if (!lat.value || !lon.value) {
+            alert('❌ Please select a location on the map.');
+            return false;
+        }
+        return true;
+    });
+
+    // Prevent form submission on invalid input
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            let isValid = true;
+            validators.forEach(fn => {
+                if (!fn()) isValid = false;
+            });
+            if (!isValid) {
+                e.preventDefault();
+                alert("❌ Please correct the errors in the form.");
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>

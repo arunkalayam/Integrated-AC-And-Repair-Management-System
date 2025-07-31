@@ -1,0 +1,35 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <h1>Complaint View</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Technician_Name</th>
+            <th>Complaint</th>
+            <th>Current Date</th>
+            <th>Reply</th>
+            </tr>
+            {% for tech in forms4 %}
+            <td> {{tech.technicianid.Technician_Name}}</td>
+            <td>{{tech.complaint}}</td>
+            <td>{{tech.cur_date}}</td>
+            <td>{{tech.reply}}</td>
+            <td><a href="{% url 'complaintdelete' tech.id %}">Delete</a></td>
+            <td><a href="{% url 'complaintedit' tech.id %}">Edit</a></td>
+            
+
+            </tr>
+            {% endfor %}
+        </center>
+            </table>
+</body>
+</html>
+{% endblock %}
