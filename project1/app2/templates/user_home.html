@@ -1,0 +1,1862 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from airslv-html.vercel.app/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Mar 2025 06:39:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> User </title>
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'acshome/airslv-html.vercel.app/assets/images/favicons/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'acshome/airslv-html.vercel.app/assets/images/favicons/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'acshome/airslv-html.vercel.app/assets/images/favicons/favicon-16x16.png' %}" />
+    <link rel="manifest" href="{% static 'acshome/airslv-html.vercel.app/assets/images/favicons/site.webmanifest' %}" />
+    <meta name="description" content="airslv HTML 5 Template " />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/animate/animate.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/animate/custom-animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/fontawesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jarallax/jarallax.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/nouislider/nouislider.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/nouislider/nouislider.pips.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/odometer/odometer.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/swiper/swiper.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/airslv-icons/style.css' %}">
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/tiny-slider/tiny-slider.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/reey-font/stylesheet.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/owl-carousel/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/owl-carousel/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/bxslider/jquery.bxslider.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/bootstrap-select/css/bootstrap-select.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/vegas/vegas.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-ui/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/timepicker/timePicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/vendors/polyglot-language-switcher/polyglot-language-switcher.css' %}" />
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/css/airslv.css' %}" />
+    <link rel="stylesheet" href="{% static 'acshome/airslv-html.vercel.app/assets/css/airslv-responsive.css' %}" />
+</head>
+
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+
+
+
+
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+    <!-- /.preloader -->
+
+
+    <div class="page-wrapper">
+        <header class="main-header clearfix">
+            <div class="main-header__top">
+                <div class="container">
+                    <div class="main-header__top-inner">
+                        <div class="main-header__top-left">
+                            <div class="main-header__top-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="main-header__top-review">
+                                <i class="fa fa-star"></i>
+                                <p>(5,223 Reviews)</p>
+                            </div>
+                        </div>
+                        <div class="main-header__top-right">
+                            <div class="main-header__top-time">
+                                <span class="icon-clock"></span>
+                                <p>Mon - Fri 8:00 - 6:30</p>
+                            </div>
+                            <div class="main-header__btn-box">
+                                <a href="logout" class="main-header__btn">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-header__middle">
+                <div class="container">
+                    <div class="main-header__middle-inner">
+                        <div class="main-header__middle-left">
+                            <div class="main-header__middle-logo">
+                                <a href="index.html"><img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/logo-1.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="main-header__middle-right">
+                            <ul class="list-unstyled main-header__contact-list">
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-location"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h5>Location</h5>
+                                        <p>Melbourne, Australia</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-phone"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h5>Phone</h5>
+                                        <p><a href="{% static 'acshome/airslv-html.vercel.app/tel:8800115244' %}">(88) 00-11-52 -44</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-envelope"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h5>Send Email</h5>
+                                        <p><a href="{% static 'acshome/airslv-html.vercel.app/mailto:helpus24@gmail.com' %}">helpus24@gmail.com</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu">
+                <div class="container">
+                    <div class="main-menu__wrapper-inner">
+                        <div class="main-menu__left">
+                            <div class="main-menu__main-menu-box">
+                                <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                <ul class="main-menu__list">
+                                    <li class="dropdown current">
+                                        <a href="home">Home </a>
+                                        <ul>
+                                            
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#">Services</a>
+                                        <ul>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/services-modern.html' %}">Services Modern</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/services-classic.html' %}">Services Classic</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/duct-repairing.html' %}">Duct Repairing</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/ac-installation.html' %}">AC Installation</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/ac-repair.html'%}">AC Repair</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/indoor-air-quality.html' %}">Indoor Air Quality</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/attic-insulation.html' %}">Attic Insulation</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/heater-repair.html' %}">Heater Repair</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#">Projects</a>
+                                        <ul>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/project-v-1.html' %}">Project V-1</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/project-v-2.html' %}">Project V-2</a></li>
+                                            <li><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Project Single</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="userprofile">Userprofile</a>
+                                       
+                                    <li class="dropdown">
+                                    
+                                        <a href="#">Technician Details</a>
+                                        <ul>
+                                            <li><a href="usertechview">Booking</a></li>
+                                            <li><a href="bookingviewuser">Booking View</a></li>
+                                            <li><a href="feedbackview">Feedback View</a></li>
+                                        
+    
+                                    
+                                       </ul> 
+                                    </li>
+                                    <li>
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/contact.html' %}">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-menu__right">
+                            <div class="main-menu__search-box">
+                                <form action="#" class="main-menu__search-form">
+                                    <input type="search" placeholder="Search keword">
+                                    <button type="submit"><i class="icon-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+        <!--Main Slider Start-->
+        <section class="main-slider clearfix">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                "effect": "fade",
+                "pagination": {
+                "el": "#main-slider-pagination",
+                "type": "bullets",
+                "clickable": true
+                },
+                "navigation": {
+                "nextEl": "#main-slider__swiper-button-next",
+                "prevEl": "#main-slider__swiper-button-prev"
+                },
+                "autoplay": {
+                "delay": 5000
+                }}'>
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                            style="background-image: url(assets/images/backgrounds/main-slider-1-1.jpg);"></div>
+                        <!-- /.image-layer -->
+                        <div class="main-slider__top-rate">
+                            <div class="main-slider__top-rate-inner"></div>
+                            <div class="main-slider__top-rate-img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/main-slider-top-rate-img.jpg' %}" alt="">
+                                <div class="main-slider__top-rate-content">
+                                    <p>Top Rated <br> Services</p>
+                                    <h3>5k</h3>
+                                    <span>Customer Review</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-slider__shape-1 float-bob-y">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-1.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-2 float-bob-y">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-2.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-3 float-bob-x">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-3.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-4"></div>
+                        <div class="main-slider__shape-5"></div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-10">
+                                    <div class="main-slider__content">
+                                        <h2 class="main-slider__title">Welcome User
+                                        </h2>
+                                        <ul class="list-unstyled main-slider__point">
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-humidity-conditioning1"></span>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Commercial <br> AC Repairs</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-air-conditioning-air1"></span>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Commercial <br> AC Repairs</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="main-slider__btn-box">
+                                            <a href="{% static 'acshome/airslv-html.vercel.app/services-classic.html' %}" class="thm-btn main-slider__btn">Our
+                                                Services</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                            style="background-image: url(assets/images/backgrounds/main-slider-1-2.jpg);"></div>
+                        <!-- /.image-layer -->
+                        <div class="main-slider__top-rate">
+                            <div class="main-slider__top-rate-inner"></div>
+                            <div class="main-slider__top-rate-img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/main-slider-top-rate-img.jpg' %}" alt="">
+                                <div class="main-slider__top-rate-content">
+                                    <p>Top Rated <br> Services</p>
+                                    <h3>5k</h3>
+                                    <span>Customer Review</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-slider__shape-1 float-bob-y">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-1.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-2 float-bob-y">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-2.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-3 float-bob-x">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-3.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-4"></div>
+                        <div class="main-slider__shape-5"></div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-10">
+                                    <div class="main-slider__content">
+                                        <h2 class="main-slider__title">Trusted Air Conditioner Repair Ac Installation
+                                        </h2>
+                                        <ul class="list-unstyled main-slider__point">
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-humidity-conditioning1"></span>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Commercial <br> AC Repairs</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-air-conditioning-air1"></span>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Commercial <br> AC Repairs</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="main-slider__btn-box">
+                                            <a href="{% static 'acshome/airslv-html.vercel.app/services-classic.html' %}" class="thm-btn main-slider__btn">Our
+                                                Services</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-layer"
+                            style="background-image: url(assets/images/backgrounds/main-slider-1-3.jpg);"></div>
+                        <!-- /.image-layer -->
+                        <div class="main-slider__top-rate">
+                            <div class="main-slider__top-rate-inner"></div>
+                            <div class="main-slider__top-rate-img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/main-slider-top-rate-img.jpg' %}" alt="">
+                                <div class="main-slider__top-rate-content">
+                                    <p>Top Rated <br> Services</p>
+                                    <h3>5k</h3>
+                                    <span>Customer Review</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-slider__shape-1 float-bob-y">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-1.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-2 float-bob-y">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-2.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-3 float-bob-x">
+                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/main-slider-shape-3.png' %}" alt="">
+                        </div>
+                        <div class="main-slider__shape-4"></div>
+                        <div class="main-slider__shape-5"></div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-10">
+                                    <div class="main-slider__content">
+                                        <h2 class="main-slider__title">Trusted Air Conditioner Repair Ac Installation
+                                        </h2>
+                                        <ul class="list-unstyled main-slider__point">
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-humidity-conditioning1"></span>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Commercial <br> AC Repairs</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <span class="icon-air-conditioning-air1"></span>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Commercial <br> AC Repairs</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="main-slider__btn-box">
+                                            <a href="{% static 'acshome/airslv-html.vercel.app/services-classic.html' %}" class="thm-btn main-slider__btn">Our
+                                                Services</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="main-slider__nav">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                        <i class="icon-left-arrow"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                        <i class="icon-right-arrow"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!--Main Slider End-->
+
+        <!--Why Choose One Start-->
+        <section class="why-choose-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="why-choose-one__left clearfix">
+                            <div class="why-choose-one__shape-1 float-bob-y">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/why-choose-one-shape-1.png' %}" alt="">
+                            </div>
+                            <div class="why-choose-one__shape-2 float-bob-x">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/why-choose-one-shape-2.png' %}" alt="">
+                            </div>
+                            <div class="why-choose-one__shape-3">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/why-choose-one-shape-3.png' %}" alt="">
+                            </div>
+                            <div class="why-choose-one__img-box">
+                                <ul class="list-unstyled why-choose-one__img-list-one">
+                                    <li>
+                                        <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/why-choose-1-1.jpg' %}" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/why-choose-1-2.jpg' %}" alt="">
+                                    </li>
+                                </ul>
+                                <ul
+                                    class="list-unstyled why-choose-one__img-list-one why-choose-one__img-list-one--two">
+                                    <li>
+                                        <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/why-choose-1-3.jpg' %}" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/why-choose-1-4.jpg' %}" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="why-choose-one__right">
+                            <div class="section-title text-left">
+                                <span class="section-title__tagline">Get To know Us</span>
+                                <h2 class="section-title__title">Trusted AC Service When You Need It Most</h2>
+                            </div>
+                            <p class="why-choose-one__text">Cool. Refreshed. Relaxed. Comfortable. That’s how you feel
+                                when your AC is working like it should. We take pride in providing fast</p>
+                            <ul class="why-choose-one__points list-unstyled">
+                                <li>
+                                    <div class="why-choose-one__icon">
+                                        <span class="icon-fan-air"></span>
+                                    </div>
+                                    <p class="why-choose-one__title">AC repairs aren’t always <br> big or costly</p>
+                                </li>
+                                <li>
+                                    <div class="why-choose-one__icon icon-two">
+                                        <span class="icon-air-conditioner"></span>
+                                    </div>
+                                    <p class="why-choose-one__title">A Fleet of Trucks & Skilled <br> Technicians</p>
+                                </li>
+                            </ul>
+                            <div class="why-choose-one__user">
+                                <div class="why-choose-one__user-left">
+                                    <h3 class="why-choose-one__user-name">Hande Andosam</h3>
+                                    <p class="why-choose-one__user-founder">Co-founder Ac repair</p>
+                                    <div class="why-choose-one__user-sign-img">
+                                        <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/why-choose-one-user-sign.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <ul class="why-choose-one__user-right list-unstyled">
+                                    <li>
+                                        <div class="user-icon">
+                                            <i class="icon-check-1"></i>
+                                        </div>
+                                        <div class="user-text">
+                                            <p>Flat Rate Plano AC Service Pricing</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="user-icon">
+                                            <i class="icon-check-1"></i>
+                                        </div>
+                                        <div class="user-text">
+                                            <p>Improper refrigerant charge</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Why Choose One End-->
+
+        <!--Counter One Start-->
+        <div class="counter-one">
+            <div class="counter-one-bg" style="background-image: url(assets/images/backgrounds/counter-bg-img.jpg);">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="counter-one__single">
+                            <div class="counter-one-inner">
+                                <div class="counter-one__icon">
+                                    <span class="icon-clock-2"></span>
+                                </div>
+                                <div class="counter-one-inner__count-box">
+                                    <h3 class="odometer" data-count="20">00</h3>
+                                    <span class="counter-one-inner__plus">+</span>
+                                </div>
+                                <p class="counter-one-inner__text">Years of experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="counter-one__single counter-one__single-two">
+                            <div class="counter-one-inner">
+                                <div class="counter-one__icon">
+                                    <span class="icon-barrel"></span>
+                                </div>
+                                <div class="counter-one-inner__count-box">
+                                    <h3 class="odometer" data-count="4.5">00</h3>
+                                    <span class="counter-one-inner__plus plus-two">k</span>
+                                </div>
+                                <p class="counter-one-inner__text">Ac Heating Repair</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="counter-one__single">
+                            <div class="counter-one-inner">
+                                <div class="counter-one__icon">
+                                    <span class="icon-teamwork"></span>
+                                </div>
+                                <div class="counter-one-inner__count-box">
+                                    <h3 class="odometer" data-count="16">00</h3>
+                                    <span class="counter-one-inner__plus">+</span>
+                                </div>
+                                <p class="counter-one-inner__text">Team Members</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="counter-one__single counter-one__single-two">
+                            <div class="counter-one-inner">
+                                <div class="counter-one__icon">
+                                    <span class="icon-certificate"></span>
+                                </div>
+                                <div class="counter-one-inner__count-box">
+                                    <h3 class="odometer" data-count="120">00</h3>
+                                    <span class="counter-one-inner__plus">+</span>
+                                </div>
+                                <p class="counter-one-inner__text">Our Certifications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Counter One End-->
+
+        <!--Services One Start-->
+        <section class="services-one">
+            <div class="services-one__bg" style="background-image: url(assets/images/backgrounds/services-one-bg.jpg);">
+            </div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Our Services</span>
+                    <h2 class="section-title__title">We Offer Quality Service</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="services-one__single">
+                            <div class="services-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/services/services-1-1.jpg' %}" alt="">
+                                <div class="services-one__icon">
+                                    <span class="icon-air-conditioner1"></span>
+                                </div>
+                            </div>
+                            <div class="services-one__content">
+                                <div class="services-one__content-inner">
+                                    <div class="services-one__shape-1"></div>
+                                    <div class="services-one__btn-box">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/duct-repairing.html' %}">Details<i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                    <div class="services-one__title">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/duct-repairing.html' %}">Duct Repairing</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="services-one__single">
+                            <div class="services-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/services/services-1-2.jpg' %}" alt="">
+                                <div class="services-one__icon">
+                                    <span class="icon-air-conditioning-air"></span>
+                                </div>
+                            </div>
+                            <div class="services-one__content">
+                                <div class="services-one__content-inner">
+                                    <div class="services-one__shape-1"></div>
+                                    <div class="services-one__shape-1"></div>
+                                    <div class="services-one__btn-box">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/ac-installation.html' %}">Details<i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                    <div class="services-one__title">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/ac-installation.html' %}">AC Installation</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="services-one__single">
+                            <div class="services-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/services/services-1-3.jpg' %}" alt="">
+                                <div class="services-one__icon">
+                                    <span class="icon-heating-1"></span>
+                                </div>
+                            </div>
+                            <div class="services-one__content">
+                                <div class="services-one__content-inner">
+                                    <div class="services-one__shape-1"></div>
+                                    <div class="services-one__shape-1"></div>
+                                    <div class="services-one__btn-box">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/ac-repair.html' %}">Details<i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                    <div class="services-one__title">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/ac-repair.html' %}">AC Repair</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-one__bottom">
+                    <p class="services-one__bottom-text">Installing an energy-efficient air conditioner can save you
+                        lots of money <br> and energy, Click the button below</p>
+                    <a href="{% static 'acshome/airslv-html.vercel.app/services-modern.html' %}" class="thm-btn">More Services</a>
+                </div>
+            </div>
+        </section>
+        <!--Services One End-->
+
+        <!--Expect One Start-->
+        <section class="expect-one">
+            <div class="expect-one__wrap">
+                <div class="expect-one__left">
+                    <div class="expect-one__shape-1 float-bob-y">
+                        <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/expect-one-shape-1.png' %}" alt="">
+                    </div>
+                    <div class="expect-one__content-box">
+                        <h3 class="expect-one__title">What to Expect</h3>
+                        <p class="expect-one__subtitle">A Reputation for Excellence</p>
+                        <ul class="expect-one__points list-unstyled">
+                            <li>
+                                <div class="expect-one__icon">
+                                    <span class="icon-truck"></span>
+                                </div>
+                                <div class="expect-one__content">
+                                    <h3>A Fleet of Trucks & Skilled <br> Technicians</h3>
+                                    <p>With over 150 dedicated employees, we guarantee fast service and response times.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="expect-one__icon">
+                                    <span class="icon-burn-emergency-equipment"></span>
+                                </div>
+                                <div class="expect-one__content">
+                                    <h3>Same-Day & Emergency <br> Services</h3>
+                                    <p>Speak to a live person who will connect you with a technician that can help 24/7.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="expect-one__icon">
+                                    <span class="icon-heating"></span>
+                                </div>
+                                <div class="expect-one__content">
+                                    <h3>Free In-Person Estimates <br> for Installations</h3>
+                                    <p>We will visit your home or business to provide an in-person quote and
+                                        professional advice.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="expect-one__right">
+                    <div class="expect-one__shape-two float-bob-x"></div>
+                    <div class="expect-one__img" style="background-image: url(assets/images/resources/expect-1-1.jpg);">
+                    </div>
+                    <div class="expect-one__video-link">
+                        <a href="#" class="video-popup">
+                            <div class="expect-one__video-icon">
+                                <span class="icon-play-button"></span>
+                                <i class="ripple"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="expect-one__quality">
+                        <div class="expect-one__quality-icon">
+                            <span class="icon-air-conditioner-air-conditioning"></span>
+                        </div>
+                        <div class="expect-one__quality-text">
+                            <p> Indoor Air Quality</p>
+                            <h3>Keeping you Healthy</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Expect One End-->
+
+        <!--How It Work Start-->
+        <section class="how-it-work">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">How It Works</span>
+                    <h2 class="section-title__title">We have air Conditioning down
+                        <br> to a precise Science</h2>
+                </div>
+                <div class="row">
+                    <!--How It Work Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="how-it-work__single">
+                            <div class="how-it-work__inner">
+                                <div class="how-it-work__icon">
+                                    <i class="icon-discuss"></i>
+                                </div>
+                                <div class="how-it-work__content">
+                                    <span class="how-it-work__step">Step 1</span>
+                                    <h3 class="how-it-work__title"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Project discuss</a>
+                                    </h3>
+                                    <p class="how-it-work__text">Lorem Ipsum is that it has a is working like it should
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--How It Work Single End-->
+                    <!--How It Work Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="how-it-work__single">
+                            <div class="how-it-work__inner">
+                                <div class="how-it-work__icon">
+                                    <i class="icon-dollar-bag"></i>
+                                </div>
+                                <div class="how-it-work__content step-two">
+                                    <span class="how-it-work__step">Step 2</span>
+                                    <h3 class="how-it-work__title"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Project Worth</a></h3>
+                                    <p class="how-it-work__text">Lorem Ipsum is that it has a is working like it should
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--How It Work Single End-->
+                    <!--How It Work Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="how-it-work__single">
+                            <div class="how-it-work__inner">
+                                <div class="how-it-work__icon">
+                                    <i class="icon-humidity-conditioning1"></i>
+                                </div>
+                                <div class="how-it-work__content">
+                                    <span class="how-it-work__step">Step 3</span>
+                                    <h3 class="how-it-work__title"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Project Type</a></h3>
+                                    <p class="how-it-work__text">Lorem Ipsum is that it has a is working like it should
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--How It Work Single End-->
+                    <!--How It Work Single Start-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="how-it-work__single">
+                            <div class="how-it-work__inner">
+                                <div class="how-it-work__icon">
+                                    <i class="icon-air-condition"></i>
+                                </div>
+                                <div class="how-it-work__content step-two">
+                                    <span class="how-it-work__step">Step 4</span>
+                                    <h3 class="how-it-work__title"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Project Finish</a>
+                                    </h3>
+                                    <p class="how-it-work__text">Lorem Ipsum is that it has a is working like it should
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--How It Work Single End-->
+                </div>
+            </div>
+        </section>
+        <!--How It Work End-->
+
+        <!--Project One Start-->
+        <section class="project-one">
+            <div class="project-one-bg" style="background-image: url(assets/images/backgrounds/project-one-bg.jpg);">
+            </div>
+            <div class="container">
+                <div class="projeci-one__top">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="project-one__left">
+                                <div class="section-title text-left">
+                                    <span class="section-title__tagline">Our Recent Work</span>
+                                    <h2 class="section-title__title">Our Recent Success <br> Project List</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="project-one__right">
+                                <p class="project-one__right-text">Lorem Ipsum available, but the majority have suffered
+                                    dimply free text Suspe ndisse suscipit sagittis dolore magna aliqua ipsum quia</p>
+                                <div class="all-project">
+                                    <h3 class="all-project__title"><a href="{% static 'acshome/airslv-html.vercel.app/project-v-1.html' %}">All Project</a></h3>
+                                    <div class="all-project__arrow">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-v-1.html' %}"><i class="icon-right-arrow"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-one__bottom">
+                    <div class="project-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                        "loop": true,
+                        "autoplay": false,
+                        "margin": 30,
+                        "nav": false,
+                        "dots": true,
+                        "smartSpeed": 500,
+                        "autoplayTimeout": 10000,
+                        "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                        "responsive": {
+                            "0": {
+                                "items": 1
+                            },
+                            "768": {
+                                "items": 2
+                            },
+                            "992": {
+                                "items": 2
+                            },
+                            "1200": {
+                                "items": 3
+                            }
+                        }
+                    }'>
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-1.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Repairing</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Duct
+                                                Repairing</a></h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-2.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Air Conditioning Repair</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Ac Repair</a>
+                                        </h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-3.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Air Installation</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Ac
+                                                Installation</a></h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-1.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Repairing</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Duct
+                                                Repairing</a></h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-2.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Air Conditioning Repair</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Ac Repair</a>
+                                        </h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-3.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Air Installation</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Ac
+                                                Installation</a></h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-1.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Repairing</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Duct
+                                                Repairing</a></h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-2.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Air Conditioning Repair</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Ac Repair</a>
+                                        </h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                        <!--Project One Single Start-->
+                        <div class="item">
+                            <div class="project-one__single">
+                                <div class="project-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/project/project-1-3.jpg' %}" alt="">
+                                </div>
+                                <div class="project-one__content">
+                                    <div class="project-one__content-border"></div>
+                                    <div class="project-one__content-left">
+                                        <p class="project-one__title">Air Installation</p>
+                                        <h3 class="project-one__subtitle"><a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}">Ac
+                                                Installation</a></h3>
+                                    </div>
+                                    <div class="project-one__content-right">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/project-details.html' %}"><i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project One Single End-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Project One End-->
+
+        <!--Testimonials One Start-->
+        <section class="testimonials-one">
+            <div class="container">
+                <div class="testimonials-one__top">
+                    <div class="section-title text-center">
+                        <span class="section-title__tagline">Testimonial</span>
+                        <h2 class="section-title__title">What Does the Customer <br> Have to Say?</h2>
+                    </div>
+                </div>
+                <div class="testimonials-one__bottom">
+                    <div class="testimonials-one__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                        "loop": true,
+                        "autoplay": false,
+                        "margin": 30,
+                        "nav": false,
+                        "dots": true,
+                        "smartSpeed": 500,
+                        "autoplayTimeout": 10000,
+                        "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                        "responsive": {
+                            "0": {
+                                "items": 1
+                            },
+                            "768": {
+                                "items": 2
+                            },
+                            "992": {
+                                "items": 2
+                            },
+                            "1200": {
+                                "items": 3
+                            }
+                        }
+                    }'>
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-1.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Robert Anton</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-2.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Adam Lotif</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-3.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Tony Lion</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-1.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Robert Anton</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-2.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Adam Lotif</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-3.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Tony Lion</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-1.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Robert Anton</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-2.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Adam Lotif</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                        <!--Testimonials One Single Start-->
+                        <div class="item">
+                            <div class="testimonials-one__single">
+                                <div class="testimonials-one__inner">
+                                    <div class="testimonials-one__client-info">
+                                        <div class="testimonials-one__client-img">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/testimonial/testimonials-1-3.jpg' %}" alt="">
+                                            <div class="testimonials-one__client-icon">
+                                                <span class="icon-quote-hand-drawn"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__client-content">
+                                            <h3 class="testimonials-one__client-name">Tony Lion</h3>
+                                            <p class="testimonials-one__client-sub-title"> Air conditioning repairs</p>
+                                        </div>
+                                    </div>
+                                    <p class="testimonials-one__text">There are many variations of passages of
+                                        Lorem Ipsum say available, but the majority have suffered alteration in some
+                                        form by injected humour words</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Testimonials One Single End-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Testimonials One End-->
+
+        <!--Team One Start-->
+        <section class="team-one">
+            <div class="team-one__bg" style="background-image: url(assets/images/backgrounds/team-one-bg.jpg);"></div>
+            <div class="container">
+                <div class="team-one__top">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="team-one__left">
+                                <div class="section-title text-left">
+                                    <span class="section-title__tagline">Our Team</span>
+                                    <h2 class="section-title__title">Meet our Ac repair
+                                        specialist !</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="team-one__right">
+                                <p class="team-one__right-text">Lorem Ipsum available, but the majority have suffered
+                                    dimply free text Suspe ndisse suscipit sagittis dolore magna aliqua ipsum quia </p>
+                                <div class="all-Member">
+                                    <h3 class="all-Member__btn"><a href="{% static 'acshome/airslv-html.vercel.app/technician.html' %}">All Member</a></h3>
+                                    <div class="all-Member__arrow">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/technician.html' %}"><i class="icon-right-arrow"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-one__bottom">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="team-one__single">
+                                <div class="team-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/team/team-1-1.jpg' %}" alt="">
+                                </div>
+                                <div class="team-one__content">
+                                    <div class="team-one__content-left">
+                                        <ul class="team-one__social-box list-unstyled">
+                                            <li>
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="team-one__content-right">
+                                        <div class="team-one__shape-one">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/team-one-shape-1.png' %}" alt="">
+                                        </div>
+                                        <div class="team-one__shape-two">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/team-one-shape_2.png' %}" alt="">
+                                        </div>
+                                        <div class="team-one__title-box">
+                                            <p class="team-one__sub-title">Repair Specialist</p>
+                                            <h3 class="team-one__title"><a href="{% static 'acshome/airslv-html.vercel.app/technician.html' %}">Tom Tomino</a></h3>
+                                        </div>
+                                        <p class="team-one__text">A beautiful collection of clean modern flexible
+                                            Services</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="team-one__single">
+                                <div class="team-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/team/team-1-2.jpg' %}" alt="">
+                                </div>
+                                <div class="team-one__content">
+                                    <div class="team-one__content-left">
+                                        <ul class="team-one__social-box list-unstyled">
+                                            <li>
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="team-one__content-right">
+                                        <div class="team-one__shape-one">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/team-one-shape-1.png' %}" alt="">
+                                        </div>
+                                        <div class="team-one__shape-two">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/team-one-shape_2.png' %}" alt="">
+                                        </div>
+                                        <div class="team-one__title-box">
+                                            <p class="team-one__sub-title">Ac repair</p>
+                                            <h3 class="team-one__title"><a href="{% static 'acshome/airslv-html.vercel.app/technician.html' %}">Jasico jene</a></h3>
+                                        </div>
+                                        <p class="team-one__text">A beautiful collection of clean modern flexible
+                                            Services</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="team-one__single">
+                                <div class="team-one__img">
+                                    <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/team/team-1-3.jpg' %}" alt="">
+                                </div>
+                                <div class="team-one__content">
+                                    <div class="team-one__content-left">
+                                        <ul class="team-one__social-box list-unstyled">
+                                            <li>
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="team-one__content-right">
+                                        <div class="team-one__shape-one">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/team-one-shape-1.png' %}" alt="">
+                                        </div>
+                                        <div class="team-one__shape-two">
+                                            <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/shapes/team-one-shape_2.png' %}" alt="">
+                                        </div>
+                                        <div class="team-one__title-box">
+                                            <p class="team-one__sub-title">Team head</p>
+                                            <h3 class="team-one__title"><a href="{% static 'acshome/airslv-html.vercel.app/technician.html' %}">Tony jackcos</a></h3>
+                                        </div>
+                                        <p class="team-one__text">A beautiful collection of clean modern flexible
+                                            Services</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Team One End-->
+
+        <!--Support One Start-->
+        <section class="support-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="support-one__left">
+                            <div class="support-one__bg"
+                                style="background-image: url(assets/images/backgrounds/support-one-bg.jpg);"></div>
+                            <div class="support-one__shape-one zoom-fade-2"></div>
+                            <div class="support-one__shape-two zoominout"></div>
+                            <div class="support-one__left-content">
+                                <p class="support-one__left-title">Heating & Air Services</p>
+                                <h3 class="support-one__left-subtitle">We Now Make Your Home Comfortable Too!</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="support-one__right">
+                            <div class="support-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/support-1-1.jpg' %}" alt="">
+                            </div>
+                            <div class="support-one__right-content">
+                                <div class="support-one__shape-three"></div>
+                                <div class="support-one__shape-four zoom-fade-2"></div>
+                                <h3 class="support-one__right-title">Heating & Air Services</h3>
+                                <div class="support-one__call">
+                                    <div class="support-one__call-icon">
+                                        <span class="icon-phone"></span>
+                                    </div>
+                                    <h4 class="support-one__call-number"><a href="tel:8844337866">+88 44-33-78 66</a>
+                                    </h4>
+                                </div>
+                                <p class="support-one__right-text">Losum dolor sit amet consectetur adipiscing elit wood
+                                    expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Support One End-->
+
+        <!--Blog One Start-->
+        <section class="blog-one">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Our Blog</span>
+                    <h2 class="section-title__title">Check latest Blog post <br> from Blog list</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/blog/blog-1-1.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <div class="blog-one__date-and-comment-box">
+                                    <div class="blog-one__date">
+                                        <span>16</span>
+                                        <p>July</p>
+                                    </div>
+                                    <div class="blog-one__comment-box">
+                                        <div class="icon">
+                                            <span class="icon-comment"></span>
+                                        </div>
+                                        <p class="comment">5 Comment</p>
+                                    </div>
+                                </div>
+                                <div class="blog-one__title-box">
+                                    <h4 class="blog-one__title"><a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">How Much Does It Cost to
+                                            Have Your Septic
+                                            Tank</a></h4>
+                                </div>
+                                <div class="blog-one__meta-box">
+                                    <div class="blog-one__meta">
+                                        <div class="blog-one__tag">
+                                            <p>Heating</p>
+                                        </div>
+                                        <div class="blog-one__meta-box-two">
+                                            <div class="icon">
+                                                <a href="#"><i class="icon-user"></i>By Admin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog-one__meta-btn">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">Details<i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/blog/blog-1-2.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <div class="blog-one__date-and-comment-box">
+                                    <div class="blog-one__date">
+                                        <span>17</span>
+                                        <p>July</p>
+                                    </div>
+                                    <div class="blog-one__comment-box">
+                                        <div class="icon">
+                                            <span class="icon-comment"></span>
+                                        </div>
+                                        <p class="comment">5 Comment</p>
+                                    </div>
+                                </div>
+                                <div class="blog-one__title-box">
+                                    <h4 class="blog-one__title"><a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">How Much Does It Cost to
+                                            Paint Kitchen
+                                            Cabinets?</a></h4>
+                                </div>
+                                <div class="blog-one__meta-box">
+                                    <div class="blog-one__meta">
+                                        <div class="blog-one__tag">
+                                            <p>Heating</p>
+                                        </div>
+                                        <div class="blog-one__meta-box-two">
+                                            <div class="icon">
+                                                <a href="#"><i class="icon-user"></i>By Admin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog-one__meta-btn">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">Details<i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="blog-one__single">
+                            <div class="blog-one__img">
+                                <img src="{% static 'acshome/airslv-html.vercel.app/assets/images/blog/blog-1-3.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-one__content">
+                                <div class="blog-one__date-and-comment-box">
+                                    <div class="blog-one__date">
+                                        <span>20</span>
+                                        <p>July</p>
+                                    </div>
+                                    <div class="blog-one__comment-box">
+                                        <div class="icon">
+                                            <span class="icon-comment"></span>
+                                        </div>
+                                        <p class="comment">5 Comment</p>
+                                    </div>
+                                </div>
+                                <div class="blog-one__title-box">
+                                    <h4 class="blog-one__title"><a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">How Much Do UV Lights Cost
+                                            for HVAC
+                                            Systems?</a></h4>
+                                </div>
+                                <div class="blog-one__meta-box">
+                                    <div class="blog-one__meta">
+                                        <div class="blog-one__tag">
+                                            <p>Heating</p>
+                                        </div>
+                                        <div class="blog-one__meta-box-two">
+                                            <div class="icon">
+                                                <a href="#"><i class="icon-user"></i>By Admin</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blog-one__meta-btn">
+                                        <a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">Details<i class="icon-right-arrow-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Blog One End-->
+
+        <!--Site Footer Start-->
+        <footer class="site-footer">
+            <div class="site-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.jpg);"></div>
+            <div class="site-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="footer-widget__column footer-widget__contact-box">
+                                <div class="footer-widget__logo-box">
+                                    <div class="footer-widget__logo">
+                                        <a href="#"><img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/footer-logo.png' %}" alt=""></a>
+                                    </div>
+                                </div>
+                                <ul class="footer-widget__contact list-unstyled">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="icon-phone"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>
+                                                <a href="tel:0881122334455">+088 11 22 33 44 55</a>
+                                                <a href="tel:86611220077">+866 11 22 00 77</a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon icon-two">
+                                            <i class="icon-location"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="#">601 Merritt 7, Norwalk, CT <br> 06851 New York, USA</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="footer-widget__social-box list-unstyled">
+                                    <li>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="footer-widget__latest-post">
+                                <h4 class="footer-widget__tag">Latest Post</h4>
+                                <ul class="footer-widget__content list-unstyled">
+                                    <li>
+                                        <span>30 August 2022</span>
+                                        <p><a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">How Much Does It Cost to <br> Remodel a
+                                                Shower?</a>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <span>30 August 2022</span>
+                                        <p><a href="{% static 'acshome/airslv-html.vercel.app/blog-details.html' %}">How Much Does It Cost to <br> Remove a Tile
+                                                Floor?</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="footer-widget__services">
+                                <h4 class="footer-widget__tag">Services</h4>
+                                <ul class="footer-widget__services-list list-unstyled">
+                                    <li><a href="{% static 'acshome/airslv-html.vercel.app/duct-repairing.html' %}">Dust Cleaning</a></li>
+                                    <li><a href="{% static 'acshome/airslv-html.vercel.app/indoor-air-quality.html' %}">Quality Testing</a></li>
+                                    <li><a href="{% static 'acshome/airslv-html.vercel.app/ac-repair.html' %}">Maintain Service</a></li>
+                                    <li><a href="{% static 'acshome/airslv-html.vercel.app/ac-installation.html' %}">AC Installation</a></li>
+                                    <li><a href="{% static 'acshome/airslv-html.vercel.app/indoor-air-quality.html' %}">Industrial Service</a></li>
+                                    <li><a href="{% static 'acshome/airslv-html.vercel.app/about.html' %}">About us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                            <div class="footer-widget__newsletter">
+                                <h4 class="footer-widget__tag">Newsletter</h4>
+                                <p class="footer-widget__title">Get the latest news, tips and latest messages, including
+                                    special offers</p>
+                                <form class="footer-widget__subscribe-box">
+                                    <div class="footer-widget__subscribe-input-box">
+                                        <input type="email" placeholder="Email Address" name="email">
+                                        <button type="submit" class="footer-widget__subscribe-btn"><i
+                                                class="icon-send"></i></button>
+                                    </div>
+                                </form>
+                                <div class="footer-widget__help">
+                                    <div class="icon">
+                                        <span class="icon-envelope"></span>
+                                    </div>
+                                    <div class="footer-widget__help-text">
+                                        <p><a href="mailto:helpus24@gmail.com">helpus24@gmail.com</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="site-footer__bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="site-footer__bottom-inner">
+                                <p class="site-footer__bottom-text">©2022 Template_mr All Rights Reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Site Footer End-->
+
+
+    </div><!-- /.page-wrapper -->
+
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image"><img src="{% static 'acshome/airslv-html.vercel.app/assets/images/resources/footer-logo.png' %}"
+                        width="143" alt="" /></a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:needhelp@packageName__.com">needhelp@airslv.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:666-888-0000">666 888 0000</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-facebook-square"></a>
+                    <a href="#" class="fab fa-pinterest-p"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                </div><!-- /.mobile-nav__social -->
+            </div><!-- /.mobile-nav__top -->
+
+
+
+        </div>
+        <!-- /.mobile-nav__content -->
+    </div>
+    <!-- /.mobile-nav__wrapper -->
+
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="thm-btn">
+                    <i class="icon-search"></i>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jarallax/jarallax.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-appear/jquery.appear.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-validate/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/odometer/odometer.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/swiper/swiper.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/tiny-slider/tiny-slider.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/wnumb/wNumb.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/wow/wow.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/isotope/isotope.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/countdown/countdown.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/bxslider/jquery.bxslider.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/vegas/vegas.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/jquery-ui/jquery-ui.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/timepicker/timePicker.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/circleType/jquery.circleType.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/circleType/jquery.lettering.min.js' %}"></script>
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/vendors/polyglot-language-switcher/jquery.polyglot.language.switcher.js' %}"></script>
+
+
+
+
+    <!-- template js -->
+    <script src="{% static 'acshome/airslv-html.vercel.app/assets/js/airslv.js' %}"></script>
+</body>
+
+
+<!-- Mirrored from airslv-html.vercel.app/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Mar 2025 06:39:22 GMT -->
+</html>

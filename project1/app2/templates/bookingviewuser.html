@@ -1,0 +1,71 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <center>
+  <h1>Booking View By User</h1>
+  <table class="table table-striped">
+    <tr>
+        <th>Technician_Name</th>
+       <th>District</th>
+       <th>City</th>
+       <th>Contact</th>
+       <th>Date</th>
+       <th>Time</th>
+       <th>Request Status</th>
+       <th>Cancel</th>
+       <th>Edit</th>
+       <th>Feedback</th>
+       <th>Track Service</th>
+       <th> Complaint </th>
+       <th>View Parts</th>
+       <th>Pay Online</th>
+       <th>Payment Status</th>
+       </tr>
+       {% for tech in forms3 %}
+       <tr>
+     
+        <td> {{tech.technicianid.Technician_Name}}</td>
+        <td>{{tech.technicianid.District}}</td>
+        <td>{{tech.technicianid.City}}</td>
+        <td>{{tech.technicianid.Contact}}</td>
+        <td>{{tech.Date}}</td>
+        <td>{{tech.Time}}</td>
+        {% if tech.tech_status == 1 %}
+        <td>Accepted</td>
+        {% elif tech.tech_status == 2  %}
+       <td>Rejected </td>
+       {% else %}
+       <td>Pending</td>
+          </td>
+        
+        {% endif %}
+        <td><a href="{% url 'cancel' tech.id %}">Cancel</a></td>
+        <td><a href="{% url 'edit' tech.id %}">Edit</a></td>
+        <td><a href="{% url 'feedback' tech.technicianid.id %}">Feedback</a></td>
+          <td><a href="{% url 'tracking' tech.id  %}">Track Service</a></td>
+          <td><a href="{% url 'complaint' tech.technicianid.id %}">Have any Complaint </a></td>
+          <td><a href="{% url 'userstoreview' tech.id %}">Parts Purchase</a></td>
+          <td><a href="{% url 'userpay' tech.id %}">Pay </a></td>
+
+        
+        {% if tech.pa_status == 1 %}
+        <td>Payment Success</td>
+        {% else %}
+       
+       {% endif %}
+     
+         </tr>
+        {% endfor %}
+       </tr>
+       </table>
+  </center>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <h1>Feedback View</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Technician_Name</th>
+            <th>Feedback</th>
+            <th>Current Date</th>
+            </tr>
+            {% for tech in forms4 %}
+            <td> {{tech.technicianid.Technician_Name}}</td>
+            <td>{{tech.Feedbacks}}</td>
+            <td>{{tech.Cur_Date}}</td>
+            <td><a href="{% url 'feeddelete' tech.id %}">Delete</a></td>
+            <td><a href="{% url 'feededit' tech.id %}">Edit</a></td>
+            
+
+            </tr>
+            {% endfor %}
+        </center>
+            </table>
+</body>
+</html>
+{% endblock %}

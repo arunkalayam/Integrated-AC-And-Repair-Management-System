@@ -1,0 +1,45 @@
+{% extends 'techhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+
+
+        <tr>
+            <td>Onroad</td>
+            {% if c.on_status == 1 %}
+            <td>updated</td>
+            {% else %}
+            <td><a href="../onroad/{{ c.id }}">Ongoing</a></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Work In Progress</td>
+            {% if c.t_status == 1 %}
+            <td>updated</td>
+            {% else %}
+            <td><a href="../work_in_progress/{{ c.id }}">Work In Progress</a></td>
+            {% endif %}
+            
+            
+        </tr>
+        <tr>
+            <td>Payment</td>
+            {% if c.pa_status == 1 %}
+            <td>Paid</td>
+            {% else %}
+            <td><a href="../usertechpay_notify/{{ c.id }}">Payment recieved</a></td>
+            {% endif %}
+        </tr>
+    </table>
+    
+</body>
+</html>
+{% endblock %}

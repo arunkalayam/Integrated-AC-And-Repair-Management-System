@@ -1,0 +1,56 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <center>
+  <div class="search-container">
+    <form method="get">
+      {% csrf_token %}
+      <input type="text" name="query" placeholder="search Technician">
+      <button type="submit">Search</button>
+      </form>
+      </div>
+      <div class="table-container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Technician_Name</th>
+             <th>District</th>
+             <th>City</th>
+             <th>Contact</th>
+             <th>Email</th>
+
+             </tr>
+              </thead>
+                         
+             <tbody>
+           {% for user in user1 %}
+             <tr>
+                 <td>{{user.Technician_Name}}</td>
+                 <td>{{user.District}}</td>
+                 <td>{{user.City}}</td>
+                  <td>{{user.Contact}}</td>
+                 <td>{{user.loginid.Email}}</td>
+                 <td><a href="{% url 'booktable' user.id %}">Booking</a></td>
+                  <td><a href="{% url 'feedbook' user.id %}">Feedback</a></td>
+                  <td><a href="{% url 'chat' user.loginid.id %}">Chat</a></td>
+
+                 
+             </tr>
+             {% endfor %}
+            </center>
+          </tbody>
+          </thead>
+        </table> 
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+{% endblock %}

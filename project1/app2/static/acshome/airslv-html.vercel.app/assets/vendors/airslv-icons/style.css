@@ -1,0 +1,209 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon78ed.eot?orkqwr');
+  src: url('fonts/icomoon78ed.eot?orkqwr#iefix') format('embedded-opentype'),
+    url('fonts/icomoon78ed.ttf?orkqwr') format('truetype'),
+    url('fonts/icomoon78ed.woff?orkqwr') format('woff'),
+    url('fonts/icomoon78ed.svg?orkqwr#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+
+
+.icon-check-1:before {
+  content: "\e90c";
+}
+.icon-phone-income:before {
+  content: "\e920";
+}
+.icon-statistics-graph:before {
+  content: "\e931";
+}
+.icon-air-condition:before {
+  content: "\e900";
+}
+.icon-air-conditioner:before {
+  content: "\e901";
+}
+.icon-air-conditioner1:before {
+  content: "\e902";
+}
+.icon-air-conditioner4:before {
+  content: "\e903";
+}
+.icon-air-conditioner-air-conditioning:before {
+  content: "\e904";
+}
+.icon-air-conditioning-air:before {
+  content: "\e905";
+}
+.icon-air-conditioning-air1:before {
+  content: "\e906";
+}
+.icon-barrel:before {
+  content: "\e907";
+}
+.icon-burn-emergency-equipment:before {
+  content: "\e908";
+}
+.icon-calendar-date-time:before {
+  content: "\e909";
+}
+.icon-certificate:before {
+  content: "\e90a";
+}
+.icon-check:before {
+  content: "\e90b";
+}
+.icon-clock:before {
+  content: "\e90d";
+}
+.icon-clock-1:before {
+  content: "\e90e";
+}
+.icon-clock-2:before {
+  content: "\e90f";
+}
+.icon-comment:before {
+  content: "\e910";
+}
+.icon-conditioning:before {
+  content: "\e911";
+}
+.icon-discuss:before {
+  content: "\e912";
+}
+.icon-dollar-bag:before {
+  content: "\e913";
+}
+.icon-download:before {
+  content: "\e914";
+}
+.icon-email:before {
+  content: "\e915";
+}
+.icon-envelope:before {
+  content: "\e916";
+}
+.icon-fan-air:before {
+  content: "\e917";
+}
+.icon-heating:before {
+  content: "\e918";
+}
+.icon-heating-1:before {
+  content: "\e919";
+}
+.icon-humidity-conditioning:before {
+  content: "\e91a";
+}
+.icon-humidity-conditioning1:before {
+  content: "\e91b";
+}
+.icon-location:before {
+  content: "\e91c";
+}
+.icon-map-marker:before {
+  content: "\e91d";
+}
+.icon-minus:before {
+  content: "\e91e";
+}
+.icon-phone:before {
+  content: "\e91f";
+}
+.icon-play-button:before {
+  content: "\e921";
+}
+.icon-plus:before {
+  content: "\e922";
+}
+.icon-price-tag:before {
+  content: "\e923";
+}
+.icon-quote-hand-drawn:before {
+  content: "\e924";
+}
+.icon-right-arrow:before {
+  content: "\e925";
+}
+.icon-left-arrow:before {
+  content: "\e926";
+}
+.icon-up-arrow1:before {
+  content: "\e927";
+}
+.icon-down-arrow:before {
+  content: "\e928";
+}
+.icon-right-arrow-1:before {
+  content: "\e929";
+}
+.icon-left-arrow-1:before {
+  content: "\e92a";
+}
+.icon-up-arrow-1:before {
+  content: "\e92b";
+}
+.icon-down-arrow-1:before {
+  content: "\e92c";
+}
+.icon-search:before {
+  content: "\e92d";
+}
+.icon-send:before {
+  content: "\e92e";
+}
+.icon-snow-bath:before {
+  content: "\e92f";
+}
+.icon-star:before {
+  content: "\e930";
+}
+.icon-tag-chevron:before {
+  content: "\e932";
+}
+.icon-teamwork:before {
+  content: "\e933";
+}
+.icon-truck:before {
+  content: "\e934";
+}
+.icon-up-arrow:before {
+  content: "\e935";
+}
+.icon-user:before {
+  content: "\e936";
+}
+.icon-user-1:before {
+  content: "\e937";
+}
+.icon-ventilating-fan:before {
+  content: "\e938";
+}
+.icon-wireframe-website:before {
+  content: "\e939";
+}
+

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/login25.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Mar 2025 06:58:27 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iofrm</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/iofrm-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/iofrm-theme29.css' %}">
+</head>
+<body>
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="index.html">
+                <div class="logo">
+                    <img class="logo-size" src="{% static 'myprojectlogin/images/logo-light.svg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="iofrm-layout">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="{% static 'myprojectlogin/images/graphic3.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Login to account</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                       
+
+                        
+                        <form method="post">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="Email" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="Password" placeholder="Password" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn" href="user_home">Login</button> 
+                                <a href="{% static 'myprojectlogin/forget25.html' %}">Forget password?</a>
+                            </div>
+                        </form>
+                        {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                            <li>
+                                {{message}}
+
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <div class="other-links social-with-title">
+                            <div class="text">Or login with</div>
+                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                        </div>
+                        <div class="page-links">
+                            <a href="{% static 'myprojectlogin/register25.html' %}">Register new account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'myprojectlogin/js/jquery.min.js' %}"></script>
+<script src="{% static 'myprojectlogin/js/popper.min.js' %}"></script>
+<script src="{% static 'myprojectlogin/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'myprojectlogin/js/main.js' %}"></script>
+</body>
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/login25.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Mar 2025 06:58:30 GMT -->
+</html>

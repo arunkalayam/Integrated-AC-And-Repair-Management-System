@@ -1,0 +1,23 @@
+{% extends 'techhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Update</title>
+</head>
+<body>
+    <center>
+    <h1>Technician Updation</h1><br><br>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{forms1}}
+        {{form2}}
+        <button type="submit" href="tech_home">Submit</button>
+    </form>
+    </center><br><br>
+</body>
+</html>
+{% endblock %}

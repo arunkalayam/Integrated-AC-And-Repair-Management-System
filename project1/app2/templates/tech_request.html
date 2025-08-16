@@ -1,0 +1,79 @@
+{% extends 'techhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <center>
+  <h1>Technician User Request View</h1>
+  <table class="table table-striped">
+    <tr>
+        <th>Name</th>
+       <th>Contact</th>
+       <th>Date</th>
+       <th>Time</th>
+       <th>Request Status</th>
+       <th>Approve/Reject</th>
+       <th></th>
+       <th>Payment status</th>
+       <th>Status Tracking</th>
+       <th></th>
+       <th>Parts View </th>
+       <th>Order Parts</th>
+       
+       </tr>
+       {% for tech in forms3 %}
+       <tr>
+     
+        <td> {{tech.user.Name}}</td>
+        <td>{{tech.user.Contact_no}}</td>
+        <td>{{tech.Date}}</td>
+        <td>{{tech.Time}}</td>
+        <td>{% if tech.status == 1 %}
+
+          cancelled
+          {% else %}
+          Not cancelled 
+          {% endif %}
+          {% if tech.tech_status == 1 %}
+          <td>Approved</td>
+          <!-- <td><a href="{% url 'techreject' tech.id %}">Reject</a></td> -->
+          {% elif tech.tech_status == 2  %}
+          <!-- <td><a href="{% url 'techapprove' tech.id %}">Approve</a></td> -->
+          <td>Rejected</td>
+          {% elif tech.status == 1  %}
+          <td>cancelled</td>
+          {% else %}
+          <td><a href="{% url 'techapprove' tech.id %}">Approve/</a> <a href="{% url 'techreject' tech.id %}"> Reject</a></td>
+          <td></td>
+          
+          {% endif %}
+        </td>
+       <td> <a href="{% url 'tech_chat' tech.user.loginid.id %}"></a></td>
+       {% if tech.tech_status == 0 or tech.tech_status == 2  %}
+<td>Not yet Approved</td>
+       {% elif tech.tech_status == 1 and tech.pa_status == 0 %}
+<td>Not paid </td>
+       {% else %}
+       <td>paid</td>
+       {% endif %}
+       {% if tech.status == 1 or tech.tech_status == 2 %}
+       <td></td>
+       {% else %}
+       <td><a href="{% url 'tech_status' tech.id  %}">Update Status</a></td>
+       <td></td>
+       {% endif %}
+      <td><a href="{% url 'tech_order' tech.id %}">View Parts</a></td>
+      <td><a href="{% url 'techpartsview' tech.id %}">Parts Purchase</a></td>
+        {% endfor %}
+      
+       </tr>
+      </center>
+       </table>
+</body>
+</html>
+{% endblock %}

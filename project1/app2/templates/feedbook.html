@@ -1,0 +1,32 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+
+</head>
+<body>
+<center>
+        <h1>Feedbacks</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Feedback</th>
+            <th>Current Date</th>
+        </tr>
+        <tr>
+            {% for tech in forms5 %}
+            <td> {{tech.user.Name}}</td>
+            <td>{{tech.Feedbacks}}</td>
+            <td>{{tech.Cur_Date}}</td>
+        </tr>
+            {% endfor %}
+    </table>
+</center>
+</body>
+</body>
+</html>
+{% endblock %}

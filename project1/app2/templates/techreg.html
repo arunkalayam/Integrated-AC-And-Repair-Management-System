@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/register20.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Mar 2025 06:57:55 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iofrm</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'reg/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'reg/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'reg/css/iofrm-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'reg/css/iofrm-theme20.css' %}">
+</head>
+<body>
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="{% static 'reg/index.html' %}">
+                <div class="logo">
+                    <img class="logo-size" src="{% static 'reg/images/logo-light.svg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="iofrm-layout">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="{% static 'reg/images/graphic3.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Register new account</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="Technician_Name" placeholder=" Technician_Name" required>
+                            <input class="form-control" type="text" name="District" placeholder="District" required>
+                            <input class="form-control" type="text" name="City" placeholder="City" required>
+                            <input class="form-control" type="number" name="Contact" placeholder="Contact" required>
+                            <input class="form-control" type="email" name="Email" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="Password" placeholder="Password" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn" href="login">Submit</button>
+                            </div>
+                        </form>
+                        <div class="other-links social-with-title">
+                            <div class="text">Or register with</div>
+                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                        </div>
+                        <div class="page-links">
+                            <a href="{% static 'reg/login20.html' %}">Login to account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'reg/js/jquery.min.js' %}"></script>
+<script src="{% static 'reg/js/popper.min.js' %}"></script>
+<script src="{% static 'reg/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'reg/js/main.js' %}"></script>
+</body>
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/register20.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Mar 2025 06:57:55 GMT -->
+</html>

@@ -1,0 +1,43 @@
+{% extends 'techhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <center>
+    <h1>Order</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <td>Product name</td>
+            <td>Amount</td>
+            <td>Parts Image</td>
+            <td>Description</td>
+            <td>Current Date</td>
+            </tr>
+        </thead>
+        <tbody>
+            <td>{{c.Parts_name}}</td>
+            <td>{{c.Amount}}</td>
+           <td><img src="{{c.Parts_Image.url}}" style="max-width: 100px; max-height: 100px; height: auto; width: auto;"> </td>
+            <td>{{c.Description}}</td>
+            <td>{{c.cur_date}}</td>
+            <td></td>
+        </tbody>
+    </table>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Enter Quantity</label>
+        <input type="number" name="Quantity" placeholder="Quantity">
+    <button type="submit">Pay Now</button>
+</form>
+</center>
+
+</body>
+</html>
+{% endblock %}

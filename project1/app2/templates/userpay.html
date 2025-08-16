@@ -1,0 +1,192 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from wpocean.com/html/tf/electian/donate.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Apr 2025 07:20:07 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="{% static 'payment/assets/images/favicon.png' %}">
+    <title>Payment On AC Service</title>
+    <link href="{% static 'payment/assets/css/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick-theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/swiper.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.transitions.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/odometer-theme-default.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/sass/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start preloader -->
+        <div class="preloader">
+            <div class="vertical-centered-box">
+                <div class="content">
+                    <div class="loader-circle"></div>
+                    <div class="loader-line-mask">
+                        <div class="loader-line"></div>
+                    </div>
+                    <img src="{% static 'payment/assets/images/preloader.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- end preloader -->
+
+        <!-- Start header -->
+        <header id="header">
+            <div class="wpo-site-header">
+                <nav class="navigation navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-3 col-sm-3  col-3 d-lg-none dl-block">
+                                <div class="mobail-menu">
+                                    <button type="button" class="navbar-toggler open-btn">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar first-angle"></span>
+                                        <span class="icon-bar middle-angle"></span>
+                                        <span class="icon-bar last-angle"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-5 col-sm-4 col-6">
+                                <div class="navbar-header">
+                                  
+                                    
+                                </div>
+                            </div>
+                           
+                                       
+                                        
+                                        
+                                              
+
+                              
+             
+           
+                 
+                                      
+                                <div class="wpo-doanation-payment">
+                                  
+                                    <div class="wpo-payment-area">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="wpo-payment-option" id="open4">
+                                                    <div class="wpo-payment-select">
+                                           
+                                                        </ul>
+                                                    </div>
+                                                    <div id="open5" class="payment-name">
+                                                        <ul>
+                                                            
+                                                            </li>
+                                                           
+                                                            </li>
+                                                           
+                                                            </li>
+                                                           
+                                                            </li>
+                                                        </ul>
+                                                        <form method="post">
+                                                            {% csrf_token %}
+                                                        <div class="contact-form form-style">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-12 col-12">
+                                                                    <label>Name On Card</label>
+                                                                    <input type="text" placeholder="" name="Name_on_card">
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-12 col-12">
+                                                                    <label>Card Number</label>
+                                                                    <input type="text" placeholder="" name="Card_No">
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-12 col-12">
+                                                                    <label>CVV</label>
+                                                                    <input type="text" placeholder="" name="CVV">
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-12 col-12">
+                                                                    <label>Expire Date</label>
+                                                                    <input type="text" placeholder="" name="Expiry_date">
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-12 col-12">
+                                                                    <label>Amount</label>
+                                                                    <input type="text" placeholder="" value="{{total}}" readonly name="amount">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="submit-area">
+                                    <button type="submit" class="theme-btn submit-btn">Pay Now</a>
+                                </form>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- wpo-event-area end -->
+
+        <!-- start of wpo-site-footer-section -->
+        
+                
+            
+               
+                              
+                              
+                      
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end container -->
+            </div>
+            <div class="wpo-lower-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-xs-12">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end of wpo-site-footer-section -->
+
+
+    </div>
+    <!-- end of page-wrapper -->
+
+    <!-- All JavaScript files
+    ================================================== -->
+    <script src="{% static 'payment/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Plugins for this template -->
+    <script src="{% static 'payment/assets/js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery.dlmenu.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery-plugin-collection.js' %}"></script>
+    <!-- Custom script for this template -->
+    <script src="{% static 'payment/assets/js/script.js' %}"></script>
+</body>
+
+
+<!-- Mirrored from wpocean.com/html/tf/electian/donate.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Apr 2025 07:20:20 GMT -->
+</html>

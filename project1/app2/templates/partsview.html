@@ -1,0 +1,40 @@
+{% extends 'storehomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <h1>Feedback View</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Parts Name</th>
+            <th>Amount</th>
+            <th>Parts Image</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Current Date</th>
+            </tr>
+            {% for parts in forms5 %}
+            <td> {{parts.Parts_name}}</td>
+            <td>{{parts.Amount}}</td>
+            <td><img src="{{parts.Parts_Image.url}}" style="max-width: 100px; max-height: 100px; height: auto; width: auto;"> </td>
+            <td>{{parts.Description}}</td>
+            <td>{{parts.Quantity}}</td>
+            <td>{{parts.cur_date}}</td>
+            <td><a href="{% url 'parts_edit' parts.id %}">Edit</a></td>
+            <td><a href="{% url 'parts_delete' parts.id %}">Delete</a></td>
+            
+            
+
+            </tr>
+            {% endfor %}
+        </center>
+            </table>
+</body>
+</html>
+{% endblock %}
