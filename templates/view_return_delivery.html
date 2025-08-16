@@ -1,0 +1,77 @@
+{% extends 'storehomeheader.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Return Delivery Details</h2>
+
+    <div class="card p-4 shadow-sm">
+        <!-- Order Info -->
+        <h5 class="mb-3">Order Information</h5>
+        <table class="table table-bordered">
+            <tr>
+                <th>Order ID</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Part Name</th>
+                <td>{{ order.partsid.Parts_name }}</td>
+            </tr>
+            <tr>
+                <th>Technician</th>
+                <td>{{ order.technicianid.Technician_Name }}</td>
+            </tr>
+            <tr>
+                <th>Total Amount</th>
+                <td>₹{{ order.Total_Amount }}</td>
+            </tr>
+            <tr>
+                <th>Order Date</th>
+                <td>{{ order.current_date }}</td>
+            </tr>
+            <tr>
+                <th>Return Status</th>
+                <td>
+                    {% if order.ret_status == 1 %}
+                        <span class="badge bg-success">Return Initiated</span>
+                    {% else %}
+                        <span class="badge bg-secondary">Not Initiated</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+        <!-- Return Delivery Info -->
+        <h5 class="mt-4 mb-3">Return Delivery(s)</h5>
+        {% if return_objs %}
+            {% for return_obj in return_objs %}
+                <div class="mb-4 border p-3 rounded shadow-sm">
+                    <h6>Return ID: {{ return_obj.id }}</h6>
+                    {% if return_obj.delivery_id %}
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Delivery Person</th>
+                                <td>{{ return_obj.delivery_id.Name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Contact</th>
+                                <td>{{ return_obj.delivery_id.Contact }}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{ return_obj.delivery_id.City }}</td>
+                            </tr>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-warning">
+                            No delivery person assigned for this return.
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">
+                No return records found for this order.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

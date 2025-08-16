@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="{% static 'payment/assets/images/favicon.png' %}">
+    <title>Payment On AC Service</title>
+    <link href="{% static 'payment/assets/css/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick-theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/swiper.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.transitions.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/odometer-theme-default.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/sass/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Payment Form Area -->
+        <div class="wpo-doanation-payment">
+            <div class="wpo-payment-area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="wpo-payment-option" id="open4">
+                            <div id="open5" class="payment-name">
+                                <form method="post" id="paymentForm">
+                                    {% csrf_token %}
+                                    <div class="contact-form form-style">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Name On Card</label>
+                                                <input type="text" name="Name_on_card" placeholder="Full name on card">
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Card Number</label>
+                                                <input type="text" name="Card_No" placeholder="1234567812345678" maxlength="16">
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>CVV</label>
+                                                <input type="text" name="CVV" placeholder="123" maxlength="3">
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Expire Date</label>
+                                                <input type="text" name="Expiry_date" placeholder="MM/YY">
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Amount</label>
+                                                <input type="text" name="amount" value="{{ total }}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="submit-area mt-3">
+                                        <button type="submit" class="theme-btn submit-btn">Pay Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'payment/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery.dlmenu.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery-plugin-collection.js' %}"></script>
+    <script src="{% static 'payment/assets/js/script.js' %}"></script>
+
+    <!-- Validation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const validators = [];
+
+            function handleValidation(input, pattern, validMsg, invalidMsg) {
+                const feedback = document.createElement('small');
+                feedback.style.display = 'block';
+                input.parentNode.appendChild(feedback);
+
+                function validate() {
+                    const value = input.value.trim();
+                    if (!value) {
+                        feedback.textContent = '❌ This field is required';
+                        feedback.style.color = 'red';
+                        return false;
+                    } else if (!pattern.test(value)) {
+                        feedback.textContent = '❌ ' + invalidMsg;
+                        feedback.style.color = 'red';
+                        return false;
+                    } else {
+                        feedback.textContent = '✅ ' + validMsg;
+                        feedback.style.color = 'green';
+                        return true;
+                    }
+                }
+
+                input.addEventListener('input', validate);
+                validators.push(validate);
+            }
+
+            handleValidation(
+                document.querySelector('input[name="Name_on_card"]'),
+                /^[A-Za-z ]+$/,
+                'Valid name',
+                'Only letters and spaces allowed'
+            );
+
+            handleValidation(
+                document.querySelector('input[name="Card_No"]'),
+                /^\d{16}$/,
+                'Valid card number',
+                'Card number must be 16 digits'
+            );
+
+            handleValidation(
+                document.querySelector('input[name="CVV"]'),
+                /^\d{3}$/,
+                'Valid CVV',
+                'CVV must be 3 digits'
+            );
+
+            handleValidation(
+                document.querySelector('input[name="Expiry_date"]'),
+                /^(0[1-9]|1[0-2])\/\d{2}$/,
+                'Valid format (MM/YY)',
+                'Must be in MM/YY format'
+            );
+
+            // Validate amount is not empty (readonly)
+            const amountInput = document.querySelector('input[name="amount"]');
+            if (amountInput) {
+                const feedback = document.createElement('small');
+                feedback.style.display = 'block';
+                amountInput.parentNode.appendChild(feedback);
+                function validateAmount() {
+                    if (amountInput.value.trim() === '') {
+                        feedback.textContent = '❌ Amount is required';
+                        feedback.style.color = 'red';
+                        return false;
+                    } else {
+                        feedback.textContent = '';
+                        return true;
+                    }
+                }
+                validators.push(validateAmount);
+            }
+
+            document.getElementById('paymentForm').addEventListener('submit', function (e) {
+                let isValid = true;
+                validators.forEach(fn => {
+                    if (!fn()) isValid = false;
+                });
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('❌ Please correct the errors before submitting.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

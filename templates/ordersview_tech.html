@@ -1,0 +1,66 @@
+{% extends 'techhomeheader.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Technician Order List</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if forms5 %}
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Technician Name</th>
+                        <th>Amount</th>
+                        <th>Parts Image</th>
+                        <th>Description</th>
+                        <th>Current Date</th>
+                        <th>Store Name</th>
+                        <th>Total Amount</th>
+                        <th>Cancel Status</th>
+                        <th>Refund Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in forms5 %}
+                    <tr class="text-center align-middle">
+                        <td>{{ a.technicianid.Technician_Name }}</td>
+                        <td>₹{{ a.partsid.Amount }}</td>
+                        <td>
+                            <img src="{{ a.partsid.Parts_Image.url }}" alt="Part Image"
+                                 style="max-width: 100px; max-height: 100px; height: auto; width: auto;">
+                        </td>
+                        <td>{{ a.partsid.Description }}</td>
+                        <td>{{ a.partsid.cur_date }}</td>
+                        <td>{{ a.partsid.store_id.Shop_name }}</td>
+                        <td>₹{{ a.Total_Amount }}</td>
+                        <td>
+                            {% if a.c_status == 0 %}
+                                <a href="{% url 'cancelled' a.id %}" class="btn btn-sm btn-warning">Cancel</a>
+                            {% else %}
+                                <span class="text-danger">Cancelled</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if a.r_status == 1 %}
+                                <span class="text-success">Refunded</span>
+                            {% else %}
+                                <span class="text-muted">-</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-danger">No orders found.</p>
+    {% endif %}
+</div>
+{% endblock %}

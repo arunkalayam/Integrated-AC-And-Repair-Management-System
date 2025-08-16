@@ -1,0 +1,124 @@
+{% extends "techhomeheader.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Update</title>
+
+    <!-- Leaflet core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <!-- Leaflet‑control‑geocoder CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+
+    <style>
+        #map{
+            height:400px;
+            width:100%;
+            margin-top:20px;
+            border:1px solid #ccc;
+            border-radius:8px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Technician Updation</h1><br><br>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ forms1 }}
+        {{ form2 }}
+
+        <!-- Hidden inputs for coordinates & place name -->
+        <input type="hidden" name="latitude"      id="latitude"      value="{{ forms1.instance.latitude }}">
+        <input type="hidden" name="longitude"     id="longitude"     value="{{ forms1.instance.longitude }}">
+        <input type="hidden" name="location_name" id="location_name" value="{{ forms1.instance.location_name }}">
+
+        <!-- Map container -->
+        <div id="map"></div>
+
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</center><br><br>
+
+<!-- Leaflet core JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Leaflet‑control‑geocoder JS -->
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const latField  = document.getElementById("latitude");
+    const lonField  = document.getElementById("longitude");
+    const nameField = document.getElementById("location_name");
+
+    // Default to Kochi if no coords saved
+    const startLat = parseFloat(latField.value) || 9.9312;
+    const startLng = parseFloat(lonField.value) || 76.2673;
+
+    /* ---------------- Map initialisation ---------------- */
+    const map = L.map("map").setView([startLat, startLng], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+        maxZoom:19,
+        attribution:"© OpenStreetMap"
+    }).addTo(map);
+
+    /* ---------------- Draggable marker ------------------ */
+    const marker = L.marker([startLat, startLng], {draggable:true}).addTo(map);
+
+    function updateHidden(lat, lng){
+        latField.value = lat;
+        lonField.value = lng;
+    }
+
+    marker.on("dragend", () => {
+        const pos = marker.getLatLng();
+        updateHidden(pos.lat, pos.lng);
+        nameField.value = "";               // clear label when manually moved
+    });
+
+    map.on("click", e => {
+        const pos = e.latlng;
+        marker.setLatLng(pos);
+        updateHidden(pos.lat, pos.lng);
+        nameField.value = "";               // clear label if clicked
+    });
+
+    /* ----------- Optional: current device location ------- */
+    if(!latField.value || !lonField.value){
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(pos=>{
+                const {latitude, longitude} = pos.coords;
+                marker.setLatLng([latitude, longitude]);
+                map.setView([latitude, longitude], 13);
+                updateHidden(latitude, longitude);
+            });
+        }
+    }
+
+    /* ---------------- Search box (Geocoder) -------------- */
+    L.Control.geocoder({
+        defaultMarkGeocode: false,
+        placeholder: "Search town or city..."
+    })
+    .on("markgeocode", e => {
+        const center = e.geocode.center;
+        const label  = e.geocode.name;   // city / place name
+
+        marker.setLatLng(center);
+        map.setView(center, 15);
+
+        updateHidden(center.lat, center.lng);
+        nameField.value = label;         // store place name
+    })
+    .addTo(map);
+});
+</script>
+</body>
+</html>
+{% endblock %}

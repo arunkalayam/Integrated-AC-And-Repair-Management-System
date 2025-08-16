@@ -1,0 +1,94 @@
+{% extends 'techhomeheader.html' %}
+{% block content %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+    .step-container {
+        margin: 50px auto;
+        max-width: 600px;
+    }
+
+    .step-box {
+        position: relative;
+        padding: 20px;
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        margin-bottom: 40px;
+    }
+
+    .step-box.completed {
+        border-left-color: #198754;
+        background-color: #e9f7ef;
+    }
+
+    .step-icon {
+        position: absolute;
+        left: -30px;
+        top: 20px;
+        font-size: 20px;
+    }
+
+    .arrow-down {
+        text-align: center;
+        font-size: 24px;
+        color: #6c757d;
+        margin: -30px 0 20px;
+    }
+</style>
+
+<div class="container step-container">
+    <h2 class="text-center mb-5">Service Status Tracking</h2>
+
+    <!-- Step 1: Onroad -->
+    <div class="step-box {% if c.on_status == 1 %}completed{% endif %}">
+        <i class="fas fa-road step-icon text-primary"></i>
+        <h5>Onduty</h5>
+        <div>
+            {% if c.on_status == 1 %}
+                <span class="badge bg-success">Updated</span>
+            {% else %}
+                <a href="{% url 'onroad' c.id %}" class="btn btn-sm btn-primary">Mark as Ongoing</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if c.on_status == 1 %}
+    <div class="arrow-down"><i class="fas fa-arrow-down"></i></div>
+    {% endif %}
+
+    <!-- Step 2: Work In Progress -->
+    <div class="step-box {% if c.t_status == 1 %}completed{% endif %}">
+        <i class="fas fa-tools step-icon text-warning"></i>
+        <h5>Work In Progress</h5>
+        <div>
+            {% if c.t_status == 1 %}
+                <span class="badge bg-success">Updated</span>
+            {% elif c.on_status == 1 %}
+                <a href="{% url 'work_in_progress' c.id %}" class="btn btn-sm btn-warning">Start Work</a>
+            {% else %}
+                <button class="btn btn-sm btn-secondary" disabled>Complete 'Onroad' First</button>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if c.t_status == 1 %}
+    <div class="arrow-down"><i class="fas fa-arrow-down"></i></div>
+    {% endif %}
+
+    <!-- Step 3: Payment -->
+    <div class="step-box {% if c.pa_status == 1 %}completed{% endif %}">
+        <i class="fas fa-money-bill-wave step-icon text-success"></i>
+        <h5>Payment</h5>
+        <div>
+            {% if c.pa_status == 1 %}
+                <span class="badge bg-success">Paid</span>
+            {% elif c.t_status == 1 %}
+                <a href="{% url 'usertechpay_notify' c.id %}" class="btn btn-sm btn-success">Confirm Payment</a>
+            {% else %}
+                <button class="btn btn-sm btn-secondary" disabled>Complete 'Work In Progress' First</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

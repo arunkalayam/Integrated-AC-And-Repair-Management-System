@@ -1,0 +1,65 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback View</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .star {
+            color: gold;
+            font-size: 18px;
+        }
+        .star.gray {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Feedback View</h1>
+
+        <table class="table table-striped table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Technician Name</th>
+                    <th>Feedback</th>
+                    <th>Rating</th>
+                    <th>Current Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tech in forms4 %}
+                <tr>
+                    <td>{{ tech.technicianid.Technician_Name }}</td>
+                    <td>{{ tech.Feedbacks }}</td>
+                    <td>
+                        {% with rating=tech.rating %}
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= rating %}
+                                    <span class="star">&#9733;</span>
+                                {% else %}
+                                    <span class="star gray">&#9733;</span>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </td>
+                    <td>{{ tech.Cur_Date }}</td>
+                    <td>
+                        <a href="{% url 'feededit' tech.id %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'feeddelete' tech.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No feedback available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

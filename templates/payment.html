@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="{% static 'payment/assets/images/favicon.png' %}">
+    <title>Payment On AC Service</title>
+    <link href="{% static 'payment/assets/css/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick-theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/swiper.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/odometer-theme-default.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/sass/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="vertical-centered-box">
+                <div class="content">
+                    <div class="loader-circle"></div>
+                    <div class="loader-line-mask">
+                        <div class="loader-line"></div>
+                    </div>
+                    <img src="{% static 'payment/assets/images/preloader.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header id="header">
+            <div class="wpo-site-header">
+                <nav class="navigation navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-3 d-lg-none dl-block">
+                                <div class="mobail-menu">
+                                    <button type="button" class="navbar-toggler open-btn">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar first-angle"></span>
+                                        <span class="icon-bar middle-angle"></span>
+                                        <span class="icon-bar last-angle"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-5 col-sm-4 col-6">
+                                <div class="navbar-header">
+                                    <!-- You can add logo or title here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Payment Area -->
+        <div class="wpo-payment-area section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="wpo-payment-option">
+                            <div class="wpo-payment-select">
+                                <h2 class="text-center mb-4">Payment Details</h2>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="contact-form form-style">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Name On Card</label>
+                                                <input type="text" name="Name_on_card" required>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Card Number</label>
+                                                <input type="text" name="Card_No" pattern="\d{16}" maxlength="16" required>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>CVV</label>
+                                                <input type="text" name="CVV" pattern="\d{3}" maxlength="3" required>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Expiry Date (MM/YY)</label>
+                                                <input type="text" name="Expiry_date" pattern="(0[1-9]|1[0-2])\/?([0-9]{2})" placeholder="MM/YY" required>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Amount</label>
+                                                <input type="text" name="amount" value="{{ amt }}" readonly>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Quantity</label>
+                                                <input type="text" name="Quantity" value="{{ quantity }}" readonly>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12">
+                                                <label>Total Amount</label>
+                                                <input type="text" name="total" value="{{ total }}" readonly>
+                                            </div>
+                                            <div class="col-12 text-center mt-4">
+                                                <button type="submit" class="theme-btn submit-btn">Pay Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer (Optional) -->
+        <footer class="wpo-site-footer">
+            <div class="wpo-lower-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-xs-12 text-center">
+                            <!-- Footer content here if needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'payment/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery.dlmenu.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery-plugin-collection.js' %}"></script>
+    <script src="{% static 'payment/assets/js/script.js' %}"></script>
+</body>
+</html>

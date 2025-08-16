@@ -1,0 +1,57 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            color: #ccc;
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Feedback</h1>
+        <form method="post">
+            {% csrf_token %}
+
+            <div>
+                <label for="id_Feedbacks">Feedback:</label><br>
+                {{ forms4.Feedbacks }}
+            </div>
+
+            <div>
+                <label>Rating:</label>
+                <div class="star-rating">
+                    {% for i in "54321" %}
+                        <input type="radio" name="rating" id="star{{ i }}" value="{{ i }}">
+                        <label for="star{{ i }}">&#9733;</label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </center>
+</body>
+</html>
+{% endblock %}

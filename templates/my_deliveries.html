@@ -1,0 +1,109 @@
+{% extends 'delivery_header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Allotted Deliveries</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .container { margin-top: 50px; }
+        .table img {
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center mb-4">My Allotted Deliveries</h2>
+
+    <!-- Payment Notification -->
+    {% if payment_received %}
+        <div class="alert alert-success text-center" role="alert">
+            💳 Payment for this month has been received.
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            ⚠️ Payment for this month is still pending.
+        </div>
+    {% endif %}
+
+    {% if my_allots %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Product Name</th>
+                        <th>Parts Image</th>
+                        <th>Technician</th>
+                        <th>Total Amount</th>
+                        <th>Delivery Time</th>
+                        <th>Status</th>
+                        <th>Order Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for allot in my_allots %}
+                        <tr>
+                            <td>{{ allot.Order_id.id }}</td>
+                            <td>{{ allot.Order_id.partsid.Parts_name }}</td>
+                            <td>
+                                <img src="{{ allot.Order_id.partsid.Parts_Image.url }}" alt="Part Image">
+                            </td>
+                            <td>{{ allot.Order_id.technicianid.Technician_Name }}</td>
+                            <td>₹{{ allot.Order_id.Total_Amount }}</td>
+                            <td>
+                                {% if allot.delivery_time %}
+                                    <span class="badge bg-light text-dark">
+                                        {{ allot.delivery_time|date:"M d, Y - H:i" }}
+                                    </span>
+                                    {% if allot.delivery_time > now %}
+                                        <span class="badge bg-info">Upcoming</span>
+                                    {% elif allot.delivery_time <= now and allot.Order_id.del_status != 2 %}
+                                        <span class="badge bg-warning text-dark">Ongoing</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="text-muted">Not Set</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if allot.Order_id.c_status == 0 %}
+                                    <span class="badge bg-success">Active</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Canceled</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ allot.Order_id.current_date }}</td>
+                            <td>
+                                {% if allot.Order_id.c_status == 1 and allot.Order_id.ret_status == 0 %}
+                                    <a href="{% url 'mark_returned' allot.Order_id.id %}" class="btn btn-sm btn-warning">
+                                        Return
+                                    </a>
+                                {% elif allot.Order_id.ret_status == 1 %}
+                                    <span class="badge bg-info">Returned</span>
+                                {% elif allot.Order_id.del_status != 2 %}
+                                    <a href="{% url 'mark_delivered' allot.Order_id.id %}" class="btn btn-sm btn-primary">
+                                        Deliver
+                                    </a>
+                                {% else %}
+                                    <span class="badge bg-secondary">Delivered</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">
+            No deliveries assigned to you yet.
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock %}

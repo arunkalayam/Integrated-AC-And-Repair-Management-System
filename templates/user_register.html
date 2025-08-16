@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'reg/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'reg/css/fontawesome-all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'reg/css/iofrm-style.css' %}" />
+  <link rel="stylesheet" href="{% static 'reg/css/iofrm-theme20.css' %}" />
+</head>
+<body>
+  <div class="form-body without-side">
+    <div class="website-logo">
+      <a href="#">
+        <div class="logo">
+          <img class="logo-size" src="{% static 'reg/images/logo-light.svg' %}" alt="Logo" />
+        </div>
+      </a>
+    </div>
+
+    <div class="iofrm-layout">
+      <div class="img-holder">
+        <div class="bg"></div>
+        <div class="info-holder">
+          <img src="{% static 'reg/images/graphic3.svg' %}" alt="Graphic" />
+        </div>
+      </div>
+
+      <div class="form-holder">
+        <div class="form-content">
+          <div class="form-items">
+            <h3>Register New Account</h3>
+            <p>Access to the most powerful tool in the entire design and web industry.</p>
+
+            <form method="post" novalidate>
+              {% csrf_token %}
+              {{ user_form.non_field_errors }}
+              {{ login_form.non_field_errors }}
+
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="id_Name">Full Name</label>
+                <input type="text" name="Name" id="id_Name" class="form-control" placeholder="Enter your name"
+                       value="{{ user_form.Name.value|default_if_none:'' }}" required />
+                <small class="text-danger">{{ user_form.Name.errors }}</small>
+                <small class="feedback" style="display: block;"></small>
+              </div>
+
+              <!-- Contact Number -->
+              <div class="form-group">
+                <label for="id_Contact_no">Contact Number</label>
+                <input type="text" name="Contact_no" id="id_Contact_no" class="form-control" placeholder="10-digit contact number"
+                       value="{{ user_form.Contact_no.value|default_if_none:'' }}" required />
+                <small class="text-danger">{{ user_form.Contact_no.errors }}</small>
+                <small class="feedback" style="display: block;"></small>
+              </div>
+
+        <!-- Email -->
+<div class="form-group">
+  <label for="id_Email">Email</label>
+  <input type="email" name="Email" id="id_Email" class="form-control" placeholder="Enter email"
+         value="{{ login_form.Email.value|default_if_none:'' }}" required />
+  <small class="text-danger">{{ login_form.Email.errors }}</small>
+  <small class="feedback" style="display: block;"></small>
+</div>
+
+<!-- Password -->
+<div class="form-group">
+  <label for="id_Password">Password</label>
+  <input type="password" name="Password" id="id_Password" class="form-control" placeholder="Enter password"
+         value="{{ login_form.Password.value|default_if_none:'' }}" required />
+  <small class="text-danger">{{ login_form.Password.errors }}</small>
+  <small class="feedback" style="display: block;"></small>
+</div>
+
+
+              <div class="form-button">
+                <button type="submit" class="ibtn">Submit</button>
+              </div>
+            </form>
+
+            <div class="other-links social-with-title">
+              <div class="text">Or register with</div>
+              <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
+              <a href="#"><i class="fab fa-google"></i>Google</a>
+              <a href="#"><i class="fab fa-linkedin-in"></i>LinkedIn</a>
+            </div>
+
+            <div class="page-links">
+              <a href="{% url 'login' %}">Login to account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ JavaScript Validation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const validators = [];
+
+      function handleValidation(input, pattern, validMsg, invalidMsg) {
+        const feedback = input.parentElement.querySelector('.feedback');
+
+        function validate() {
+          const value = input.value.trim();
+          if (!value) {
+            feedback.textContent = '❌ This field is required';
+            feedback.style.color = 'red';
+            return false;
+          } else if (!pattern.test(value)) {
+            feedback.textContent = '❌ ' + invalidMsg;
+            feedback.style.color = 'red';
+            return false;
+          } else {
+            feedback.textContent = '✅ ' + validMsg;
+            feedback.style.color = 'green';
+            return true;
+          }
+        }
+
+        input.addEventListener('input', validate);
+        validators.push(validate);
+      }
+
+      handleValidation(
+        document.querySelector('input[name="Name"]'),
+        /^[A-Za-z ]+$/,
+        'Valid name',
+        'Name must contain only letters and spaces'
+      );
+
+      handleValidation(
+        document.querySelector('input[name="Contact_no"]'),
+        /^\d{10}$/,
+        'Valid contact number',
+        'Enter a valid 10-digit phone number'
+      );
+// Email validation
+handleValidation(
+  document.querySelector('input[name="Email"]'),
+  /^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/,
+  'Valid email address',
+  'Enter a valid email (e.g., user@example.com)'
+);
+
+// Password validation
+handleValidation(
+  document.querySelector('input[name="Password"]'),
+  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/,
+  'Strong password',
+  'Minimum 6 characters with letters and numbers'
+);
+
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function (e) {
+        let isValid = true;
+        validators.forEach(fn => {
+          if (!fn()) isValid = false;
+        });
+        if (!isValid) {
+          e.preventDefault();
+          alert("❌ Please correct validation errors before submitting.");
+        }
+      });
+    });
+  </script>
+
+  <!-- Scripts -->
+  <script src="{% static 'reg/js/jquery.min.js' %}"></script>
+  <script src="{% static 'reg/js/popper.min.js' %}"></script>
+  <script src="{% static 'reg/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'reg/js/main.js' %}"></script>
+</body>
+</html>

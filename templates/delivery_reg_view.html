@@ -1,0 +1,35 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<center>
+    <h1>Registered Delivery Personnel</h1>
+</center>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>City</th>
+            <th>License</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in forms3 %}
+        <tr>
+            <td>{{ a.Name }}</td>
+            <td>{{ a.Contact }}</td>
+            <td>{{ a.City }}</td>
+            <td>{{ a.License_no }}</td>
+            <td>
+                <a class="btn btn-success btn-sm" href="/assign_delivery/{{ order_id }}/{{ a.id }}">Allot</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" style="text-align: center;">No delivery personnel registered yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

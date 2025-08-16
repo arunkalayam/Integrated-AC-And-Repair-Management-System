@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | iofrm</title>
+
+    <!-- Fonts & Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/iofrm-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myprojectlogin/css/iofrm-theme29.css' %}">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-items h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .form-items p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .alert-messages {
+            margin-top: 15px;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .alert-info {
+            background-color: #e7f3fe;
+            color: #31708f;
+        }
+
+        .page-links {
+            margin-top: 25px;
+        }
+
+        .page-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: #007bff;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .page-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .img-holder {
+                display: none;
+            }
+
+            .form-holder {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="/">
+                <div class="logo">
+                    <img class="logo-size" src="{% static 'myprojectlogin/images/logo-light.svg' %}" alt="Logo">
+                </div>
+            </a>
+        </div>
+
+        <div class="iofrm-layout">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="{% static 'myprojectlogin/images/graphic3.svg' %}" alt="Graphic">
+                </div>
+            </div>
+
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Login to your account</h3>
+                        <p>Access the most powerful tools in the web industry.</p>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="Email" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="Password" placeholder="Password" required>
+
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Login</button>
+                            </div>
+                        </form>
+
+                        {% if messages %}
+                        <div class="alert-messages">
+                            {% for message in messages %}
+                            <div class="alert alert-info">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'myprojectlogin/js/jquery.min.js' %}"></script>
+    <script src="{% static 'myprojectlogin/js/popper.min.js' %}"></script>
+    <script src="{% static 'myprojectlogin/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'myprojectlogin/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'userhomeheader.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h3>Assign Delivery Time to {{ delivery.Name }}</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Assign Delivery</button>
+        <a href="{% url 'paystoreview' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

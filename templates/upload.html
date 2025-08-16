@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AC Error Code Analyzer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #e1f5fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .upload-container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+    }
+
+    .upload-container h2 {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #1a237e;
+    }
+
+    .upload-container input[type="file"] {
+      margin: 15px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .upload-container button {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .upload-container button:hover {
+      background: #0d47a1;
+    }
+
+    .response-box {
+      margin-top: 25px;
+      padding: 18px;
+      background: #e3f2fd;
+      border-radius: 10px;
+      color: #0d47a1;
+      font-size: 15px;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .complaint-link {
+      display: none;
+      margin-top: 20px;
+      font-size: 15px;
+      color: #1976d2;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .complaint-link:hover {
+      text-decoration: underline;
+      color: #0d47a1;
+    }
+
+    @media (max-width: 500px) {
+      .upload-container {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h2>AC Error Code Image Analyzer</h2>
+    <input type="file" id="acImageInput" accept="image/*" />
+    <button onclick="uploadImage()">Analyze</button>
+    <div class="response-box" id="responseBox"></div>
+    <a href="#" id="complaintLink" class="complaint-link">Complaint Booking</a>
+  </div>
+
+  <script>
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    function uploadImage() {
+      const fileInput = document.getElementById('acImageInput');
+      const file = fileInput.files[0];
+      const responseBox = document.getElementById('responseBox');
+
+      if (!file) {
+        alert("Please select an image first.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('csrfmiddlewaretoken', getCookie('csrftoken'));
+
+      responseBox.style.display = 'block';
+      responseBox.innerHTML = 'Analyzing image...';
+
+fetch('/analyze-error-code/', {
+  method: 'POST',
+  body: formData
+})
+.then(res => res.json())
+.then(data => {
+  const complaintLink = document.getElementById('complaintLink');
+  const responseBox = document.getElementById('responseBox');
+
+  if (data.error) {
+    responseBox.innerHTML = `<strong style="color:red;">Error:</strong> ${data.error}`;
+    complaintLink.style.display = 'none';
+  } else {
+    const code = encodeURIComponent(data.code);
+    const imgUrl = encodeURIComponent(data.image_url); // This must be returned by your backend!
+    
+    responseBox.innerHTML = `<strong>Detected Code:</strong><br>${data.code}`;
+    complaintLink.href = `/usertechview?error_code=${code}&image_url=${imgUrl}`;
+    complaintLink.style.display = 'inline-block';
+  }
+})
+.catch(err => {
+  responseBox.innerHTML = '<strong style="color:red;">Failed to analyze image.</strong>';
+  console.error(err);
+});
+
+    }
+  </script>
+</body>
+</html>

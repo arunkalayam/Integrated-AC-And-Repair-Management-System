@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Technician</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'reg/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reg/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reg/css/iofrm-style.css' %}">
+    <link rel="stylesheet" href="{% static 'reg/css/iofrm-theme20.css' %}">
+
+    <!-- Leaflet & Geocoder CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+    <style>
+        #map {
+            height: 300px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        small {
+            font-size: 0.85em;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="form-body without-side">
+    <div class="website-logo">
+        <a href="{% static 'reg/index.html' %}">
+            <div class="logo">
+                <img class="logo-size" src="{% static 'reg/images/logo-light.svg' %}" alt="Logo">
+            </div>
+        </a>
+    </div>
+    <div class="iofrm-layout">
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+                <img src="{% static 'reg/images/graphic3.svg' %}" alt="">
+            </div>
+        </div>
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register new account</h3>
+                    <p>Access to technician portal and manage your bookings.</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input class="form-control" type="text" name="Technician_Name" placeholder="Technician Name" required>
+                        <input class="form-control" type="text" name="District" placeholder="District" required>
+                        <input class="form-control" type="text" name="City" placeholder="City" required>
+                        <input class="form-control" type="number" name="Contact" placeholder="Contact" required>
+                        <input class="form-control" type="email" name="Email" placeholder="E-mail Address" required>
+                        <input class="form-control" type="password" name="Password" placeholder="Password" required>
+
+                        <label>Select Your Location on Map or Search</label>
+                        <div id="map"></div>
+
+                        <!-- Hidden coordinate & location fields -->
+                        <input type="hidden" id="id_latitude" name="latitude" required>
+                        <input type="hidden" id="id_longitude" name="longitude" required>
+                        <input type="hidden" id="id_location_name" name="location_name">
+
+                        <div class="form-button mt-3">
+                            <button type="submit" class="ibtn">Submit</button>
+                        </div>
+                    </form>
+
+                    <div class="other-links social-with-title">
+                        <div class="text">Or register with</div>
+                        <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
+                        <a href="#"><i class="fab fa-google"></i>Google</a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i>LinkedIn</a>
+                    </div>
+
+                    <div class="page-links">
+                        <a href="{% static 'reg/login20.html' %}">Login to account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'reg/js/jquery.min.js' %}"></script>
+<script src="{% static 'reg/js/popper.min.js' %}"></script>
+<script src="{% static 'reg/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'reg/js/main.js' %}"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const latInput = document.getElementById("id_latitude");
+    const lonInput = document.getElementById("id_longitude");
+    const nameInput = document.getElementById("id_location_name");
+
+    const map = L.map("map").setView([20.5937, 78.9629], 5);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap"
+    }).addTo(map);
+
+    let marker;
+
+    function setMarker(latlng, label = "") {
+        if (!marker) {
+            marker = L.marker(latlng, { draggable: true }).addTo(map);
+            marker.on("dragend", () => {
+                const pos = marker.getLatLng();
+                latInput.value = pos.lat;
+                lonInput.value = pos.lng;
+                nameInput.value = "";
+            });
+        } else {
+            marker.setLatLng(latlng);
+        }
+
+        latInput.value = latlng.lat;
+        lonInput.value = latlng.lng;
+        if (label) {
+            nameInput.value = label;
+        }
+    }
+
+    map.on("click", e => setMarker(e.latlng));
+
+    L.Control.geocoder({
+        defaultMarkGeocode: false,
+        placeholder: "Search location"
+    }).on("markgeocode", function(e) {
+        const center = e.geocode.center;
+        const name = e.geocode.name;
+        setMarker(center, name);
+        map.setView(center, 14);
+    }).addTo(map);
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            const coords = {
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude
+            };
+            setMarker(coords);
+            map.setView(coords, 13);
+        });
+    }
+
+    setTimeout(() => map.invalidateSize(), 400);
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const validators = [];
+
+    function handleValidation(input, pattern, validMsg, invalidMsg) {
+        const feedback = document.createElement('small');
+        feedback.style.display = 'block';
+        input.insertAdjacentElement('afterend', feedback);
+
+        function validate() {
+            const value = input.value.trim();
+            if (!value) {
+                feedback.textContent = '❌ This field is required';
+                feedback.style.color = 'red';
+                return false;
+            } else if (!pattern.test(value)) {
+                feedback.textContent = '❌ ' + invalidMsg;
+                feedback.style.color = 'red';
+                return false;
+            } else {
+                feedback.textContent = '✅ ' + validMsg;
+                feedback.style.color = 'green';
+                return true;
+            }
+        }
+
+        input.addEventListener('input', validate);
+        validators.push(validate);
+    }
+
+    // Fields
+    const nameInput = document.querySelector('input[name="Technician_Name"]');
+    if (nameInput) handleValidation(nameInput, /^[A-Za-z ]+$/, 'Valid name', 'Only letters and spaces allowed');
+
+    const districtInput = document.querySelector('input[name="District"]');
+    if (districtInput) handleValidation(districtInput, /^[A-Za-z ]+$/, 'Valid district', 'Only letters and spaces allowed');
+
+    const cityInput = document.querySelector('input[name="City"]');
+    if (cityInput) handleValidation(cityInput, /^[A-Za-z ]+$/, 'Valid city', 'Only letters and spaces allowed');
+
+    const contactInput = document.querySelector('input[name="Contact"]');
+    if (contactInput) handleValidation(contactInput, /^\d{10}$/, 'Valid phone number', 'Must be 10-digit number');
+
+    const emailInput = document.querySelector('input[name="Email"]');
+    if (emailInput) handleValidation(emailInput, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Valid email', 'Invalid email format');
+
+    const passwordInput = document.querySelector('input[name="Password"]');
+    if (passwordInput) handleValidation(passwordInput, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/, 'Strong password', 'Min 8 chars, upper/lower/number/special');
+
+    // Map validation
+    const lat = document.querySelector('input[name="latitude"]');
+    const lon = document.querySelector('input[name="longitude"]');
+
+    validators.push(() => {
+        if (!lat.value || !lon.value) {
+            alert("❌ Please select a location on the map.");
+            return false;
+        }
+        return true;
+    });
+
+    // Form submit
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            let isValid = true;
+            validators.forEach(fn => {
+                if (!fn()) isValid = false;
+            });
+            if (!isValid) {
+                e.preventDefault();
+                alert("❌ Please correct errors before submitting.");
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>

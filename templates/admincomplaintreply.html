@@ -1,0 +1,22 @@
+{% extends 'admin_header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <center>
+    <h1>Response To Complaint</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="Customer Input">Reply:</label>
+        <input type="text" id="custom input" name="reply" placeholder="Enter text here">
+        <button type="submit" >Submit</button>
+    </center>
+    </form>
+</body>
+</html>
+{% endblock %}

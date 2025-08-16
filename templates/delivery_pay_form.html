@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment On AC Service</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'payment/assets/images/favicon.png' %}">
+    <link href="{% static 'payment/assets/css/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/slick-theme.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/swiper.min.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/owl.transitions.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/css/odometer-theme-default.css' %}" rel="stylesheet">
+    <link href="{% static 'payment/assets/sass/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="page-wrapper">
+    <div class="wpo-doanation-payment section-padding">
+        <div class="container">
+            <div class="wpo-payment-area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="wpo-payment-option">
+                            <h2 class="text-center mb-4">
+                                Delivery Payment for {{ delivery.Name }}
+                                {% if selected_month %}
+                                    <br><small class="text-muted">For {{ selected_month|date:"F Y" }}</small>
+                                {% endif %}
+                            </h2>
+
+                            <!-- Payment Status -->
+                            <div class="text-center mb-4">
+                                {% if is_paid %}
+                                    <span style="background-color: black; color: white; padding: 8px 16px; border-radius: 4px;">
+                                        Status: Paid
+                                    </span>
+                                {% else %}
+                                    <span style="background-color: black; color: white; padding: 8px 16px; border-radius: 4px;">
+                                        Status: Unpaid
+                                    </span>
+                                {% endif %}
+                            </div>
+
+                            <form method="post" onsubmit="return validateForm()">
+                                {% csrf_token %}
+                                <input type="hidden" name="selected_month" value="{{ selected_month }}">
+                                
+                                <div class="contact-form form-style">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <label>Name On Card</label>
+                                            <input type="text" name="name" pattern="[A-Za-z\s]{3,}" title="Enter a valid name (letters and spaces only)" required>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <label>Card Number</label>
+                                            <input type="text" name="card_no" pattern="\d{16}" maxlength="16" title="Enter a 16-digit card number" required>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <label>CVV</label>
+                                            <input type="text" name="cvv" pattern="\d{3}" maxlength="3" title="Enter a 3-digit CVV" required>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <label>Expiry Date</label>
+                                            <input type="text" name="expiry" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Enter expiry in MM/YY format" required>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <label>Amount</label>
+                                            <input type="text" value="₹{{ payment }}" readonly name="amount">
+                                        </div>
+                                    </div>
+                                    <div class="submit-area mt-4 text-center">
+                                        <button type="submit" class="theme-btn submit-btn">Pay ₹{{ payment }}</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            {% if delivery_count == 0 %}
+                                <div class="alert alert-warning text-center mt-4">
+                                    No deliveries found for the selected month. Payment not required.
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="{% static 'payment/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'payment/assets/js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery.dlmenu.js' %}"></script>
+    <script src="{% static 'payment/assets/js/jquery-plugin-collection.js' %}"></script>
+    <script src="{% static 'payment/assets/js/script.js' %}"></script>
+
+    <!-- Custom Form Validation Script -->
+    <script>
+        function validateForm() {
+            const cardNo = document.querySelector('input[name="card_no"]').value.trim();
+            const cvv = document.querySelector('input[name="cvv"]').value.trim();
+            const expiry = document.querySelector('input[name="expiry"]').value.trim();
+
+            if (!/^\d{16}$/.test(cardNo)) {
+                alert("Card number must be exactly 16 digits.");
+                return false;
+            }
+
+            if (!/^\d{3}$/.test(cvv)) {
+                alert("CVV must be exactly 3 digits.");
+                return false;
+            }
+
+            if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) {
+                alert("Expiry must be in MM/YY format.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</div>
+</body>
+</html>
